@@ -6,8 +6,7 @@ const chance = require('chance')()
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/auth/src/Auth')} Auth */
-/** @typedef {import('@adonisjs/session/src/Session')} Session */
+/** @typedef {import('@adonisjs/ally/src/Ally')} Ally */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
@@ -32,11 +31,14 @@ class LoginController {
    *
    * @param {object} ctx
    * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * @param {Ally} ctx.ally
    * @param {View} ctx.view
+   * @param {Response} ctx.response
    */
-  async create({ request, response, view }) {
-    return view.render('pages.login', { telegramBot: Env.get('TELEGRAM_BOT') })
+  async create({ request, ally, view, response }) {
+    const telegramBot = Env.get('TELEGRAM_BOT')
+    const googleUrl = await ally.driver('google').getRedirectUrl()
+    return view.render('pages.login', { telegramBot, googleUrl })
   }
 
   /**
@@ -108,7 +110,7 @@ class LoginController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async callback({ params, request, response, auth, session }) {
+  async callback({ params, request, ally, auth, session, response }) {
 
     // user details to be saved
     const userDetails = {
@@ -116,19 +118,23 @@ class LoginController {
       login_source: params.socials
     }
 
-    switch (params.socials) {
+    switch (params.social) {
       case 'telegram':
         let name = chance.name();
         if (request.input('first_name') || request.input('last_name')) {
           name = request.input('first_name') || '' + ' ' + request.input('last_name') || ''
         }
+
         userDetails.name = name
         userDetails.login = request.input('username')
         userDetails.photo_url = request.input('photo_url')
         break;
 
       case 'google':
-
+        const googleUser = await ally.driver('google').getUser()
+        userDetails.name = googleUser.getName() || googleUser.getNickname()
+        userDetails.login = googleUser.getEmail()
+        userDetails.photo_url = googleUser.getAvatar()
         break;
     }
 
