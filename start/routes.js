@@ -28,6 +28,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/user/:id/online', 'UserController.online').as('user.online')
   Route.get('/tasks', 'TaskController.index').as('tasks.index')
+  Route.get('/tasks/:slug', 'TaskController.index').as('tasks.show')
 }).middleware(['auth'])
 
 Route.group(() => {
