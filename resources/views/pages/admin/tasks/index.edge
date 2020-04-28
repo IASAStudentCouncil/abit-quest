@@ -1,0 +1,76 @@
+@layout('layouts.admin')
+
+@section('title')
+Tasks
+@endsection
+
+@section('content')
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Tasks</h1>
+      <a href="{{route('admin.tasks.create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-add fa-plus text-white-50"></i> Create Task </a>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                {{--  <th>Description</th>  --}}
+                <th>Answer</th>
+                <th>Score</th>
+                <th>Start date</th>
+                <th>Is manual</th>
+                <th>Bonus Time (sec.)</th>
+                <th>Bonus Coeficient</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @each(task in tasks)
+              <tr>
+                <td>{{task.id}}</td>
+                <td>{{task.name}}</td>
+                {{--  <td>{{task.description}}</td>  --}}
+                <td>{{task.answer}}</td>
+                <td>{{task.score}}</td>
+                <td>{{task.started_at}}</td>
+                <td>{{task.is_manual}}</td>
+                <td>{{task.bonus_time}}</td>
+                <td>{{task.bonus_coef}}</td>
+                <td><i onclick="alert({{route('admin.tasks.destroy', {id: task.id})}})"  class="fas fa-trash" click=""></i></td>
+              </tr>
+              @endeach
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+@endsection
+
+@section('script')
+  <script>
+    function remove(url) {
+      console.log(url)
+    }
+  </script>
+@endsection
+
+
+
+
+

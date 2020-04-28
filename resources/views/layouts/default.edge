@@ -11,5 +11,11 @@
 </head>
 <body>
   @!section('content')
+  @if(auth.user)
+    <script>
+      setInterval(fetch('{{route('user.online', {id: auth.user.id})}}'), 2 * 60 * 1000)
+    </script>
+  @endif
+
 </body>
 </html>

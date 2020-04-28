@@ -10,9 +10,9 @@ class UserSchema extends Schema {
       table.string('name').notNullable()
       table.string('login').notNullable().unique()
       table.string('password').notNullable()
-      table.enu('login_source', ['telegram', 'google', 'email']).default('email')
+      table.enu('login_source', ['telegram', 'google', 'email']).defaultTo('email')
       table.string('photo_url').nullable()
-      table.enu('rank', ['student_ptu', 'kpishnik', 'ipsashnik', 'ipsashnik_na_povishke']).default('student_ptu')
+      table.enu('rank', ['student_ptu', 'kpishnik', 'ipsashnik', 'ipsashnik_na_povishke']).defaultTo('student_ptu')
       table.timestamps()
     })
   }
