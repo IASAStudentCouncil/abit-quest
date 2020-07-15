@@ -16,19 +16,19 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-//Route.on('/').render('pages.index').as('index')
+Route.on('/').render('pages.index').as('index')
 
 Route.group(() => {
-  Route.get('/', 'LoginController.create').as('login.create')
+  Route.get('/login', 'LoginController.create').as('login.create')
   Route.post('/login', 'LoginController.store').as('login.store')
 
   Route.get('login/callback/:social', 'LoginController.callback').as('login.callback')
 }).middleware(['guest'])
 
 Route.group(() => {
-  Route.get('/user/:id/online', 'UserController.online').as('user.online')
-  Route.get('/tasks', 'TaskController.index').as('tasks.index')
-  Route.get('/tasks/:slug', 'TaskController.index').as('tasks.show')
+  Route.get('user/:id/online', 'UserController.online').as('user.online')
+  Route.get('tasks', 'TaskController.index').as('tasks.index')
+  Route.get('tasks/:slug', 'TaskController.index').as('tasks.show')
 }).middleware(['auth'])
 
 Route.group(() => {

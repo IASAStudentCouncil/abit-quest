@@ -38,7 +38,7 @@ class LoginController {
   async create({ request, ally, view, response }) {
     const telegramBot = Env.get('TELEGRAM_BOT')
     const googleUrl = await ally.driver('google').getRedirectUrl()
-    return view.render('pages.index', { telegramBot, googleUrl })
+    return view.render('pages.login', { telegramBot, googleUrl })
   }
 
   /**
@@ -103,6 +103,11 @@ class LoginController {
   }
 
 
+  async redirect ({ ally }) {
+    await ally.driver('google').redirect()
+  }
+
+
   /**
    * Callback for auth
    * Get callback
@@ -147,7 +152,7 @@ class LoginController {
     await auth.login(user)
 
     session.flash({ successMessage: 'You have logged in successfully!' })
-    return response.route('/abitquest.php/tasks', userDetails)
+    return response.redirect('/abitquest.php/tasks', userDetails)
   }
 }
 

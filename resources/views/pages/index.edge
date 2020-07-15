@@ -80,11 +80,11 @@ Welcome
         </span>
         <p align="center">Login with Google</p>
       </a> -->
-      <a href="{{googleUrl}}" class="login col-10 col-md-5 col-lg-5 col-xl-5">
+      <a href="{{ route('') }}" class="login col-10 col-md-5 col-lg-5 col-xl-5">
         <span class="pic">
           <img src="img/logo-gg.svg" alt="">
         </span>
-        <p align="center">Login with Google</p>
+        <p align="center">Login</p>
       </a>
 
       <script async src="https://telegram.org/js/telegram-widget.js?7" data-telegram-login="{{telegramBot}}" data-size="medium" data-auth-url="{{ route('login.callback', {social: 'telegram'}) }}" data-request-access="write"></script>
