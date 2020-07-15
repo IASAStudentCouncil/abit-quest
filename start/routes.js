@@ -16,10 +16,10 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('pages.index').as('index')
+//Route.on('/').render('pages.index').as('index')
 
 Route.group(() => {
-  Route.get('/login', 'LoginController.create').as('login.create')
+  Route.get('/', 'LoginController.create').as('login.create')
   Route.post('/login', 'LoginController.store').as('login.store')
 
   Route.get('login/callback/:social', 'LoginController.callback').as('login.callback')
