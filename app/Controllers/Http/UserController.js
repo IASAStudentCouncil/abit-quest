@@ -57,7 +57,7 @@ class UserController {
   async show ({ params, request, response, view }) {
     const topUsersList = [{
       name: "",
-      
+
     }] // dummy list
     return view.render('pages.users.show', )
   }
