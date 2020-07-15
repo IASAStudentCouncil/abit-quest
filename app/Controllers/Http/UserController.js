@@ -55,6 +55,11 @@ class UserController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const topUsersList = [{
+      name: "",
+      
+    }] // dummy list
+    return view.render('pages.users.show', )
   }
 
   /**
@@ -105,6 +110,7 @@ class UserController {
     await user.save()
     return 'OK'
   }
+
 }
 
 module.exports = UserController

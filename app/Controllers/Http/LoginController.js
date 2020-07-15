@@ -38,7 +38,7 @@ class LoginController {
   async create({ request, ally, view, response }) {
     const telegramBot = Env.get('TELEGRAM_BOT')
     const googleUrl = await ally.driver('google').getRedirectUrl()
-    return view.render('pages.login', { telegramBot, googleUrl })
+    return view.render('pages.index', { telegramBot, googleUrl })
   }
 
   /**
