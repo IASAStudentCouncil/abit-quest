@@ -11,7 +11,7 @@ const { validateAll } = use('Validator')
  * Resourceful controller for interacting with users
  */
 class UserController {
-  create ({ view }) {
+  async create ({ view, ally }) {
     const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
     const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
     return view.render('user.create', googleUrl, telegramBot)

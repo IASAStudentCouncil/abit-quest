@@ -1,7 +1,7 @@
 'use strict'
 
 class SessionController {
-  create ({ view }) {
+  async create ({ view, ally }) {
     const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
     const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
     return view.render('session.create', googleUrl, telegramBot)
