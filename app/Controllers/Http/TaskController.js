@@ -91,6 +91,19 @@ class TaskController {
    */
   async destroy({ params, request, response }) {
   }
+
+
+  /**
+  * Check the solution to the task with id 'slug'
+  * POST tasks/:slug
+  */
+  async check({params, request, response, auth}) {
+    const task_id = params.slug
+    const anwser = request.input("anwser")
+
+    const user = auth.getUser()
+    
+  }
 }
 
 module.exports = TaskController

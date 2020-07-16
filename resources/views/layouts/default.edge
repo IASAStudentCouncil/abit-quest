@@ -9,10 +9,10 @@
     | IASA ABIT QUEST 2020
   </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-  <link href="fonts/sfui.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-  <link href="style.css" rel="stylesheet" type="text/css">
+  
+  {{ style('/style.css') }}
+  {{ style('/fonts/sfui.css') }}
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 
   @if(auth.user)
     <script>
-      setInterval(fetch('{{route('user.online', {id: auth.user.id})}}'), 2 * 60 * 1000)
+      setInterval(fetch("{{route('user.online', {id: auth.user.id})}}"), 2 * 60 * 1000)
     </script>
   @endif
   @!section('scripts')

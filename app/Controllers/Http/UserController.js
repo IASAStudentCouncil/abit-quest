@@ -1,6 +1,7 @@
 'use strict'
 
 const User = use('App/Models/User')
+const { validateAll } = use('Validator')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -10,107 +11,51 @@ const User = use('App/Models/User')
  * Resourceful controller for interacting with users
  */
 class UserController {
-  /**
-   * Show a list of all users.
-   * GET users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async index ({ request, response, view }) {
+  create ({ view }) {
+    const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
+    const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
+    return view.render('user.create', googleUrl, telegramBot)
   }
 
-  /**
-   * Render a form to be used for creating a new user.
-   * GET users/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
+  async store ({ auth, session, request, response }) {
+    const data = request.only(['username', 'email', 'password', 'password_confirmation'])
+
+    const validation = await validateAll(data, {
+      username: 'required|unique:users',
+      email: 'required|email|unique:users',
+      password: 'required',
+      password_confirmation: 'required_if:password|same:password',
+    })
+
+    if (validation.fails()) {
+      session
+        .withErrors(validation.messages())
+        .flashExcept(['password'])
+
+      return response.redirect('back')
+    }
+
+    delete data.password_confirmation
+    data.name = data.username
+
+    const user = await User.create(data)
+
+    await auth.login(user)
+
+    return response.redirect('/abitquest.php/tasks')
   }
 
-  /**
-   * Create/save a new user.
-   * POST users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async store ({ request, response }) {
+  async show ({ auth, session, request, response, view }) {
+    try {
+      const user = await auth.getUser()
+      return view.render("user.show", {user:user})
+    } catch (error) {
+      response.send('Missing or invalid api token')
+      return response.redirect('/abitquest.php/login')
+    }
+
+
   }
-
-  /**
-   * Display a single user.
-   * GET users/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
-    const topUsersList = [{
-      name: "",
-
-    }] // dummy list
-    return view.render('pages.users.show', )
-  }
-
-  /**
-   * Render a form to update an existing user.
-   * GET users/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
-
-  /**
-   * Update user details.
-   * PUT or PATCH users/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {
-  }
-
-  /**
-   * Delete a user with id.
-   * DELETE users/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy ({ params, request, response }) {
-  }
-
-  /**
-   * Update user active status
-   * GET users/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async online ({params, request, response }) {
-    const user = await User.find(params.id)
-    user.updated_at = new Date()
-    await user.save()
-    return 'OK'
-  }
-
 }
 
 module.exports = UserController

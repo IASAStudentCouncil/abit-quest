@@ -36,8 +36,8 @@ class LoginController {
    * @param {Response} ctx.response
    */
   async create({ request, ally, view, response }) {
-    const telegramBot = Env.get('TELEGRAM_BOT')
-    const googleUrl = await ally.driver('google').getRedirectUrl()
+    const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
+    const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
     return view.render('pages.login', { telegramBot, googleUrl })
   }
 

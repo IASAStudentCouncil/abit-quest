@@ -7,8 +7,9 @@ class UserSchema extends Schema {
   up () {
     this.create('users', (table) => {
       table.increments()
+      table.string('username', 80).notNullable().unique()
+      table.string('email', 254).notNullable().unique()
       table.string('name').notNullable()
-      table.string('login').notNullable().unique()
       table.string('password').notNullable()
       table.enu('login_source', ['telegram', 'google', 'email']).defaultTo('email')
       table.string('photo_url').nullable()
