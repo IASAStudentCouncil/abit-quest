@@ -4,8 +4,8 @@ const Env = use('Env')
 
 class SessionController {
   async create ({ view, ally }) {
-    const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
-    const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
+    const telegramBot = Env.get('TELEGRAM_BOT')
+    const googleUrl = await ally.driver('google').getRedirectUrl()
     return view.render('session.create', googleUrl, telegramBot)
   }
 

@@ -13,8 +13,8 @@ const Env = use('Env')
  */
 class UserController {
   async create ({ view, ally }) {
-    const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
-    const googleUrl = await ally.driver('google').getRedirectUrl() || "#google"
+    const telegramBot = Env.get('TELEGRAM_BOT')
+    const googleUrl = await ally.driver('google').getRedirectUrl()
     return view.render('user.create', googleUrl, telegramBot)
   }
 
