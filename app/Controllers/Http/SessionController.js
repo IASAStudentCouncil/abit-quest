@@ -1,5 +1,7 @@
 'use strict'
 
+const Env = use('Env')
+
 class SessionController {
   async create ({ view, ally }) {
     const telegramBot = Env.get('TELEGRAM_BOT') || "#telegram"
