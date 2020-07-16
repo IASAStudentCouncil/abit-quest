@@ -32,7 +32,7 @@ Route.group(() => {
   Route.get('user/:id/online', 'UserController.online').as('user.online')
   Route.get('user/cabinet', 'UserController.show').as('user.show')
   Route.get('tasks', 'TaskController.index').as('tasks.index')
-  //Route.get('tasks/:slug', 'TaskController.show').as('tasks.show')
+  // Route.get('tasks/:slug', 'TaskController.show').as('tasks.show')
   Route.post('tasks/:slug', 'TaskController.check').as('tasks.check')
 }).middleware(['auth'])
 
