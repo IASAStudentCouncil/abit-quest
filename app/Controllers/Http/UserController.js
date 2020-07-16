@@ -15,7 +15,7 @@ class UserController {
   async create ({ view, ally }) {
     const telegramBot = Env.get('TELEGRAM_BOT')
     const googleUrl = await ally.driver('google').getRedirectUrl()
-    return view.render('user.create', googleUrl, telegramBot)
+    return view.render('user.create', {googleUrl, telegramBot})
   }
 
   async store ({ auth, session, request, response }) {
