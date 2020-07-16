@@ -2,6 +2,7 @@
 
 const User = use('App/Models/User')
 const { validateAll } = use('Validator')
+const Env = use('Env')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
