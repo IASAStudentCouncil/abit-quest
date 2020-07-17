@@ -131,7 +131,7 @@ class LoginController {
         }
 
         userDetails.name = name
-        userDetails.login = request.input('username')
+        userDetails.login = request.input('email')
         userDetails.username = request.input('username')
         userDetails.photo_url = request.input('photo_url')
         break;
@@ -154,7 +154,7 @@ class LoginController {
     await auth.login(user)
 
     session.flash({ successMessage: 'You have logged in successfully!' })
-    return response.redirect('/abitquest.php/tasks/', userDetails)
+    return response.route('/abitquest.php/tasks/')
   }
 }
 
