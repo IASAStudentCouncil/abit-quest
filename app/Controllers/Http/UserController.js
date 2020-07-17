@@ -19,11 +19,11 @@ class UserController {
   }
 
   async store ({ auth, session, request, response }) {
-    const data = request.only(['username', 'email', 'password', 'password_confirmation'])
+    const data = request.only(['username', 'login', 'password', 'password_confirmation'])
 
     const validation = await validateAll(data, {
       username: 'required|unique:users',
-      email: 'required|email|unique:users',
+      login: 'required|login|unique:users',
       password: 'required',
       password_confirmation: 'required_if:password|same:password',
     })
