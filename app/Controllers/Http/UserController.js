@@ -23,7 +23,7 @@ class UserController {
 
     const validation = await validateAll(data, {
       username: 'required|unique:users',
-      login: 'required|login|unique:users',
+      login: 'required|email|unique:users',
       password: 'required',
       password_confirmation: 'required_if:password|same:password',
     })

@@ -13,7 +13,7 @@ class AllowGuestOnly {
   async handle({ request, auth, response }, next) {
     try {
       await auth.check()
-      response.route('index')
+      response.route('/abitquest.php/tasks/')
     }
     catch {
       // call next to advance the request
