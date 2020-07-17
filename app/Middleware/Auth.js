@@ -16,7 +16,7 @@ class IsAdmin {
     try {
       await auth.check()
     } catch  {
-      return response.route('login.create')
+      return response.route('/abitquest.php/login/')
     }
     await next()
   }

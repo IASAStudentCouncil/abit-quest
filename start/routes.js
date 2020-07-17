@@ -19,8 +19,8 @@ const Route = use('Route')
 Route.on('/').render('pages.index').as('index')
 
 Route.group(() => {
-  Route.get('login', 'SessionController.create')
-  Route.post('login', 'SessionController.store')
+  Route.get('login', 'SessionController.create').as('session.create')
+  Route.post('login', 'SessionController.store').as('session.store')
 
   Route.get('register', 'UserController.create')
   Route.post('register', 'UserController.store')
