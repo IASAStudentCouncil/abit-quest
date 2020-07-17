@@ -43,7 +43,7 @@ class UserController {
 
     await auth.login(user)
 
-    return response.redirect('/abitquest.php/tasks')
+    return response.route('/abitquest.php/tasks/')
   }
 
   async show ({ auth, session, request, response, view }) {
@@ -52,7 +52,7 @@ class UserController {
       return view.render("user.show", {user:user})
     } catch (error) {
       response.send('Missing or invalid api token')
-      return response.redirect('/abitquest.php/login')
+      return response.redirect('/abitquest.php/login/')
     }
 
 

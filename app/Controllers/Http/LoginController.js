@@ -139,7 +139,7 @@ class LoginController {
       case 'google':
         const googleUser = await ally.driver('google').getUser()
         userDetails.name = googleUser.getName() || "Mr. Smith"
-        userDetails.username = googleUser.getNickname() "incognito"
+        userDetails.username = googleUser.getNickname() || "incognito"
         userDetails.login = googleUser.getEmail()
         userDetails.photo_url = googleUser.getAvatar()
         break;

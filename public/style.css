@@ -526,6 +526,11 @@ img[src="img/logo-SC.svg"] {
   background-size: cover;
 }
 
+.cab-profile .img-holder img {
+  width: 100%;
+  height: auto;
+}
+
 .cab-profile #name-holder {
   padding: 25px 0 5px 0;
   font: 38px "SF UI Display Medium";

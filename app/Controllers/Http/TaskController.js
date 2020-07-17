@@ -17,8 +17,10 @@ class TaskController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {
-    return view.render('pages.tasks.index')
+  async index({ request, response, view, auth }) {
+    let user = await auth.getUser()
+    user.photo_url = user.photo_url || "../img/Avatar.svg"
+    return view.render('pages.tasks.index', {user:user})
   }
 
   /**
@@ -102,7 +104,7 @@ class TaskController {
     const anwser = request.input("anwser")
 
     const user = auth.getUser()
-    
+
   }
 }
 

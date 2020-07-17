@@ -23,14 +23,16 @@ class SessionController {
 
       session.flash({ error: 'We cannot find any account with these credentials.' })
 
-      return response.redirect('/abitquest.php/login')
+      return response.redirect('/abitquest.php/login/')
     }
 
     /**
      * We are authenticated.
      */
-    return response.redirect('/abitquest.php/tasks')
+    return response.redirect('/abitquest.php/tasks/')
   }
+
+
 
   async delete ({ auth, response }) {
     await auth.logout()
