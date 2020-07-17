@@ -154,7 +154,7 @@ class LoginController {
     await auth.login(user)
 
     session.flash({ successMessage: 'You have logged in successfully!' })
-    return response.redirect('/abitquest.php/tasks', userDetails)
+    return response.redirect('/abitquest.php/tasks/', userDetails)
   }
 }
 
