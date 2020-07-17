@@ -19,11 +19,11 @@ const Route = use('Route')
 Route.on('/').render('pages.index').as('index')
 
 Route.group(() => {
-  Route.get('login', 'SessionController.create').as('session.create')
-  Route.post('login', 'SessionController.store').as('session.store')
+  Route.get('login/', 'SessionController.create').as('session.create')
+  Route.post('login/', 'SessionController.store').as('session.store')
 
-  Route.get('register', 'UserController.create')
-  Route.post('register', 'UserController.store')
+  Route.get('register/', 'UserController.create').as('user.create')
+  Route.post('register/', 'UserController.store').as('user.store')
 
   Route.get('login/callback/:social', 'LoginController.callback').as('login.callback')
 }).middleware(['guest'])
