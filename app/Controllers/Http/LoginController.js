@@ -120,7 +120,7 @@ class LoginController {
     // user details to be saved
     const userDetails = {
       password: chance.string({ length: 16 }),
-      login_source: params.socials
+      login_source: params.social
     }
 
     switch (params.social) {
@@ -154,7 +154,7 @@ class LoginController {
     await auth.login(user)
 
     session.flash({ successMessage: 'You have logged in successfully!' })
-    return response.route('/abitquest.php/tasks/', userDetails)
+    return response.redirect('/abitquest.php/tasks/', userDetails)
   }
 }
 
