@@ -51,8 +51,8 @@ class RegisterController {
     const data = request.only(['username', 'login', 'password', 'password_confirmation'])
 
     const validation = await validateAll(data, {
-      username: 'required|unique:users',
-      login: 'required|login|unique:users',
+      username: 'required',
+      login: 'required|unique:users',
       password: 'required',
       password_confirmation: 'required_if:password|same:password',
     })
