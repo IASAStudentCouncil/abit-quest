@@ -22,8 +22,8 @@ Route.group(() => {
   Route.get('login/', 'SessionController.create').as('session.create')
   Route.post('login/', 'SessionController.store').as('session.store')
 
-  Route.get('register/', 'UserController.create').as('user.create')
-  Route.post('register/', 'UserController.store').as('user.store')
+  Route.get('register/', 'RegisterController.create').as('user.create')
+  Route.post('register/', 'RegisterController.store').as('user.store')
 
   Route.get('login/callback/:social', 'SessionController.callback').as('session.callback')
 }).middleware(['guest'])
