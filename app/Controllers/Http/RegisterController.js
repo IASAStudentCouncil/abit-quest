@@ -45,8 +45,9 @@ class RegisterController {
    */
   async store ({ request, response, session }) {
     const user = await User.create({
-      name: request.input('name'),
-      login: request.input('email'),
+      name:request.input('username'),
+      username: request.input('username'),
+      login: request.input('login'),
       password: request.input('password')
     })
 

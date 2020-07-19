@@ -9,7 +9,7 @@ class UserSchema extends Schema {
       table.increments()
       table.string('username', 80).notNullable().unique()
       table.string('login', 254).notNullable().unique()
-      table.string('name').notNullable()
+      table.string('name').notNullable().defaultTo('incognito')
       table.string('password').notNullable()
       table.enu('login_source', ['telegram', 'google', 'email']).defaultTo('email')
       table.string('photo_url').nullable()
