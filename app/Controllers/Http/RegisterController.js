@@ -1,6 +1,8 @@
 'use strict'
 
 const User = use('App/Models/User')
+const Env  = use('Env')
+const {validateAll} = use('Validator')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -32,7 +34,9 @@ class RegisterController {
    * @param {View} ctx.view
    */
   async create ({ request, response, view }) {
-    return view.render('pages.register')
+    const telegramBot = Env.get('TELEGRAM_BOT')
+    const googleUrl = await ally.driver('google').getRedirectUrl()
+    return view.render('user.create', {telegramBot, googleUrl})
   }
 
   /**
