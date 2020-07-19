@@ -1,6 +1,8 @@
 'use strict'
 
+const User = use("App/Models/User")
 const Env = use('Env')
+const chance = require('chance')()
 
 class SessionController {
   async create ({ view, ally }) {
@@ -32,6 +34,47 @@ class SessionController {
     return response.redirect('/abitquest.php/tasks/')
   }
 
+  async callback ({params, request, response, auth, ally, session}) {
+
+        // user details to be saved
+        const userDetails = {
+          password: chance.string({ length: 16 }),
+          login_source: params.social
+        }
+
+        switch (params.social) {
+          case 'telegram':
+            let name = chance.name();
+            if (request.input('first_name') || request.input('last_name')) {
+              name = request.input('first_name') || '' + ' ' + request.input('last_name') || ''
+            }
+
+            userDetails.name = name
+            userDetails.login = request.input('email')
+            userDetails.username = request.input('username')
+            userDetails.photo_url = request.input('photo_url')
+            break;
+
+          case 'google':
+            const googleUser = await ally.driver('google').getUser()
+            userDetails.name = googleUser.getName() || "Mr. Smith"
+            userDetails.username = googleUser.getNickname() || "incognito"
+            userDetails.login = googleUser.getEmail()
+            userDetails.photo_url = googleUser.getAvatar()
+            break;
+        }
+
+        // search for existing user
+        const whereClause = {
+          login: userDetails.login
+        }
+
+        const user = await User.findOrCreate(whereClause, userDetails)
+        await auth.login(user)
+
+        session.flash({ successMessage: 'You have logged in successfully!' })
+        return response.route('/abitquest.php/tasks/')
+  }
 
 
   async delete ({ auth, response }) {

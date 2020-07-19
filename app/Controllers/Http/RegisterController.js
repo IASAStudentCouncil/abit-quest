@@ -44,15 +44,29 @@ class RegisterController {
    * @param {Response} ctx.response
    */
   async store ({ request, response, session }) {
-    const user = await User.create({
-      name:request.input('username'),
-      username: request.input('username'),
-      login: request.input('login'),
-      password: request.input('password')
+    const data = request.only(['username', 'login', 'password', 'password_confirmation'])
+
+    const validation = await validateAll(data, {
+      username: 'required|unique:users',
+      login: 'required|email|unique:users',
+      password: 'required',
+      password_confirmation: 'required_if:password|same:password',
     })
 
-    session.flash({ successMessage: 'You have registered successfully!' })
-    return response.redirect('/abitquest.php/login/')
+    if (validation.fails()) {
+      session
+        .withErrors(validation.messages())
+        .flashExcept(['password'])
+
+      return response.redirect('back')
+    }
+
+    delete data.password_confirmation
+
+    const user = await User.create(data)
+    await auth.login(user)
+
+    return response.redirect('/abitquest.php/tasks/')
   }
 
   /**
