@@ -76,6 +76,11 @@ class SessionController {
         return response.route('/abitquest.php/tasks/')
   }
 
+  async show ({ auth, view, request, response }) {
+    const user = auth.getUser()
+    return view.render('user.show', {user:user})
+  }
+
 
   async delete ({ auth, response }) {
     await auth.logout()

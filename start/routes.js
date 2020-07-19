@@ -30,7 +30,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('user/:id/online', 'UserController.online').as('user.online')
-  Route.get('user/cabinet/', 'UserController.show').as('user.show')
+  Route.get('user/cabinet/', 'SessionController.show').as('user.show')
   Route.get('logout/', 'SessionController.delete').as('session.delete')
   Route.get('tasks/', 'TaskController.index').as('tasks.index')
   // Route.get('tasks/:slug', 'TaskController.show').as('tasks.show')

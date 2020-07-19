@@ -33,7 +33,7 @@ class RegisterController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create ({ally, request, response, view }) {
     const telegramBot = Env.get('TELEGRAM_BOT')
     const googleUrl = await ally.driver('google').getRedirectUrl()
     return view.render('user.create', {telegramBot, googleUrl})
