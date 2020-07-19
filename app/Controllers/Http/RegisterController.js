@@ -51,7 +51,7 @@ class RegisterController {
     })
 
     session.flash({ successMessage: 'You have registered successfully!' })
-    return response.redirect('/login')
+    return response.redirect('/abitquest.php/login/')
   }
 
   /**
