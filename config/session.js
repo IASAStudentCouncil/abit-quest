@@ -66,7 +66,7 @@ module.exports = {
   cookie: {
     httpOnly: true,
     sameSite: false,
-    path: '/abitquest.php/'
+    path: '/'
   },
 
   /*
