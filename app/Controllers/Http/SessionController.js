@@ -35,7 +35,7 @@ class SessionController {
   }
 
   async callback ({params, request, response, auth, ally, session}) {
-
+    try {
         // user details to be saved
         const userDetails = {
           password: chance.string({ length: 16 }),
@@ -72,12 +72,14 @@ class SessionController {
         const user = await User.findOrCreate(whereClause, userDetails)
         await auth.login(user)
 
-        session.flash({ successMessage: 'You have logged in successfully!' })
         return response.route('/abitquest.php/tasks/')
+      } catch (error) {
+        return error
+      }
   }
 
   async show ({ auth, view, request, response }) {
-    const user = auth.getUser()
+    const user = await auth.getUser()
     return view.render('user.show', {user:user})
   }
 
