@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const User = use('App/Models/User')
 
 class SeedAdminSchema extends Schema {
-  up () {
+  async up () {
     const user = new User()
     user.name = 'admin'
     user.login = 'admin@iasa.com'
@@ -15,7 +15,7 @@ class SeedAdminSchema extends Schema {
     await user.save()
   }
 
-  down () {
+  async down () {
     const user = await User.findBy('login', 'admin@iasa.com')
     if(user) {
       await user.delete();
