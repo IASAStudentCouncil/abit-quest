@@ -17,8 +17,9 @@ class TaskController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {
-    return view.render('pages.tasks.index')
+  async index({ auth, request, response, view }) {
+    const user = await auth.getUser()
+    return view.render('pages.tasks.index', {user: user})
   }
 
   /**
