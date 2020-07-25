@@ -13,7 +13,9 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
-const Database = use('Database')
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Task = use('App/Models/Task')
+
 
 class TaskSeeder {
   async run () {
@@ -21,7 +23,7 @@ class TaskSeeder {
     const tasksInfo = [
       {
         name: "Ребус",
-        slug: "1",
+        slug: "SimonHaley",
         answer: "ИПСА ИПСА САПР САПР ММСА",
         score: 5,
         is_manual: false,
@@ -29,7 +31,7 @@ class TaskSeeder {
       },
       {
         name: "Книга всем книгам",
-        slug: "2",
+        slug: "KarlRamirez",
         answer: "Михаил",
         score: 5,
         is_manual: false,
@@ -37,7 +39,7 @@ class TaskSeeder {
       },
       {
         name: "Где-то я эту штуку видел...",
-        slug: "3",
+        slug: "DavidShields",
         answer: "3301199726359",
         score: 5,
         is_manual: false,
@@ -45,7 +47,7 @@ class TaskSeeder {
       },
       {
         name: "А все ли так двоично?",
-        slug: "4",
+        slug: "KyranCervantes",
         answer: "14",
         score: 10,
         is_manual: false,
@@ -53,7 +55,7 @@ class TaskSeeder {
       },
       {
         name: "Цезарь говорит",
-        slug: "5",
+        slug: "RayJarvis",
         answer: "пусть умолкнет всякий критик я системный аналитик",
         score: 10,
         is_manual: false,
@@ -61,7 +63,7 @@ class TaskSeeder {
       },
       {
         name: "Жмакай на кнопку",
-        slug: "6",
+        slug: "BenHolmes",
         answer: "enable",
         score: 10,
         is_manual: false,
@@ -69,7 +71,7 @@ class TaskSeeder {
       },
       {
         name: "Неумелый верстальщик",
-        slug: "7",
+        slug: "RubbishOwls",
         answer: "3301IASA",
         score: 15,
         is_manual: false,
@@ -77,7 +79,7 @@ class TaskSeeder {
       },
       {
         name: "Иголка в стоге сена",
-        slug: "8",
+        slug: "ZakariyaRuiz",
         answer: "IASAisalifestyle",
         score: 15,
         is_manual: false,
@@ -85,7 +87,7 @@ class TaskSeeder {
       },
       {
         name: "Часовая пиктограмма",
-        slug: "9",
+        slug: "DeanSolis",
         answer: "аллилуия",
         score: 20,
         is_manual: false,
@@ -93,7 +95,7 @@ class TaskSeeder {
       },
       {
         name: "Wake up, samurai",
-        slug: "10",
+        slug: "CarmenAcevedo",
         answer: "16384",
         score: 20,
         is_manual: false,
@@ -101,7 +103,7 @@ class TaskSeeder {
       },
       {
         name: "Я спортсмен",
-        slug: "11",
+        slug: "ChewyChewy",
         answer: "",
         score: 20,
         is_manual: true,
@@ -109,7 +111,7 @@ class TaskSeeder {
       },
       {
         name: "Почувствуй себя Богом",
-        slug: "12",
+        slug: "WalkingDolls",
         answer: "MATAN",
         score: 20,
         is_manual: false,
@@ -117,16 +119,15 @@ class TaskSeeder {
       },
       {
         name: "Это не картинка",
-        slug: "13",
+        slug: "LimpKnight",
         answer: "FROM IASA WITH LOVE",
         score: 25,
         is_manual: false,
         // started_at: Date.parse('30 Aug 2020 23:59:59 GMT+3'),
       },
     ]
-    for (let i = 1; i <= tasksInfo.length; i++) {
-      await Database.table('tasks').insert(tasksInfo[i])
-    }
+
+    const tasks = await Task.createMany(tasksInfo)
   }
 }
 
