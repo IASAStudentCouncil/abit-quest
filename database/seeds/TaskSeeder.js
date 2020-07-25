@@ -94,7 +94,7 @@ class TaskSeeder {
       {
         name: "Wake up, samurai",
         slug: "10",
-        answer: "",
+        answer: "16384",
         score: 20,
         is_manual: false,
         // started_at: Date.parse('23 Aug 2020 23:59:59 GMT+3'),
@@ -102,7 +102,7 @@ class TaskSeeder {
       {
         name: "Я спортсмен",
         slug: "11",
-        answer: "16384",
+        answer: "",
         score: 20,
         is_manual: true,
         // started_at: Date.parse('23 Aug 2020 23:59:59 GMT+3'),
