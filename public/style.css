@@ -385,6 +385,7 @@ a.login:hover {
   height: 40px;
   width: auto;
   margin-right: 15px;
+  filter: invert(100%) sepia(0%) saturate(7498%) hue-rotate(58deg) brightness(110%) contrast(101%);
 }
 
 .social {
@@ -524,6 +525,13 @@ img[src="img/logo-SC.svg"] {
   height: 30vmin;
   background-image: url("img/profile-background.svg");
   background-size: cover;
+  padding: 1px;
+}
+
+.cab-profile .img-holder img {
+  width: 100%;
+  height: auto;
+
 }
 
 .cab-profile #name-holder {
@@ -532,8 +540,14 @@ img[src="img/logo-SC.svg"] {
 }
 
 #tag-holder {
+  padding-bottom: 5px;
   font: 24px "SF UI Display Medium";
   color: rgba(255, 255, 255, .6);
+}
+
+.cab-profile #link-holder {
+  font: 20px "SF UI Display Medium";
+  color: #FFEA87 !important;
 }
 
 #triggers {
@@ -769,6 +783,8 @@ img[src="img/logo-SC.svg"] {
   padding: 0;
   width: calc(12vh - 42px);
   height: 100%;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 .text-holder {

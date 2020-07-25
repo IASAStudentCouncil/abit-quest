@@ -26,7 +26,7 @@ Personal page
 
       <!-- site menu/nav -->
       <ul id="cab-triggers" class="triggers-holder d-flex d-lg-none">
-        <li id="cab-trigger" class="cab-trigger"><a href="{{ route("tasks.index") }}">Хаб заданий</a></li>
+        <li id="cab-trigger" class="cab-trigger"><a href="{{ route("tasks.index") }}">ХАБ ЗАДАНИЙ</a></li>
         <li id="cab-trigger-1" class="t-active cab-trigger">ОБЩАЯ СТАТИСТИИКА</li>
         <li id="cab-trigger-2" class="cab-trigger">УВЕДОМЛЕНИЯ</li>
         <li id="cab-trigger-3" class="cab-trigger">ПРАВИЛА</li>
@@ -50,7 +50,7 @@ Personal page
         <div class="img-holder"><img src="{{ user.photo_url }}" alt=""></div>
         <div class="text" id="name-holder">{{ user.name }}</div>
         <div class="text" id="tag-holder">{{"@" + user.username}}</div>
-        <div class="text" id="link-holder"><a class="logout" href="{{ route("users.delete") }}">Выйти с аккаунта</a></div>
+        <div class="text" id="link-holder"><a class="logout" href="{{ route("login.destoy") }}">Выйти с аккаунта</a></div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
 

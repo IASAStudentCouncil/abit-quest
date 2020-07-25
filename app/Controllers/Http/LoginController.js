@@ -66,7 +66,7 @@ class LoginController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {
-    
+
   }
 
   /**
@@ -94,13 +94,16 @@ class LoginController {
 
   /**
    * Delete a login with id.
-   * DELETE logins/:id
+   * DELETE logout
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {
+  async destroy({ auth, params, request, response }) {
+    await auth.logout()
+
+    return response.route("/")
   }
 
 
