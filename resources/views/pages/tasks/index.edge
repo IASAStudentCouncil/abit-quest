@@ -1,20 +1,310 @@
 @layout('layouts.default')
 
 @section('title')
-Tasks
+Task Hub
+@endsection
+
+@section('header')
+<header class="cab-header container">
+  <div class="cab-header__inner container-md justify-content-between">
+    <div class="picture col-3">
+      <img alt="" src="/img/logo-horizontal.svg">
+    </div>
+    <div class="timer col-6">
+      <span class="timer__title">The next task will be available in:</span>
+      <span class="timer__time" id="timer__time"></span>
+    </div>
+    <div class="profile-link col-3">
+      <div class="row">
+        <a class="personal_cab" href="{{ route("/logins/" + user.id) }}">
+          <div class="avatar-holder col-auto col-md-auto">
+            <img alt="" class="avatar" src="{{ user.photo_url }}">
+          </div>
+          <div class="d-none d-lg-flex text-holder col-auto">
+            <p class="">Личный<br>кабинет</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
 @endsection
 
 @section('content')
-<ul>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-  <li>govno</li>
-</ul>
+<main class="d-block">
+  <div class="container-md main-carousel d-block d-lg-none">
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 1</h2>
+        </div>
+        <div class="col-12">
+          <img alt="ПТУшник" class="task_lvl" src="/img/1_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal1" id="active1">I</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal2" id="active1">II</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal3" id="active1">III</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 2</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="/img/2_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal4" id="active2">IV</button></div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal5" id="active2">V</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal6" id="active2">VI</button>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal7" id="active2">VII</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal8" id="active2">VIII</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 3</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="/img/3_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal9" id="active3">IX</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal10" id="active3">X</button>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal11" id="active3">XI</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal12" id="active3">XII</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 4</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" ="/img/4_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal13" id="active3">XIII</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-md d-none d-lg-block">
+
+
+    <div class="task-block container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 1</h2>
+        </div>
+        <div class="col-12">
+          <img alt="ПТУшник" class="task_lvl" src="/img/1_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal1" id="active1">I</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal2" id="active1">II</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal3" id="active1">III</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 2</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="/img/2_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal4" id="active2">IV</button></div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal5" id="active2">V</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal6" id="active2">VI</button>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal7" id="active2">VII</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal8" id="active2">VIII</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 3</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="/img/3_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal9" id="active3">IX</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal10" id="active3">X</button>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal11" id="active3">XI</button>
+        </div>
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal12" id="active3">XII</button>
+        </div>
+      </div>
+    </div>
+    <div class="task-block container-fluid">
+      <div class="task-block__header">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 4</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="/img/4_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <button class="task" data-modal-target="#modal13" id="active3">XIII</button>
+        </div>
+      </div>
+    </div>
+</main>
+@endsection
+
+@section('footer')
+<footer class="cab-footer container-fluid">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-auto">
+        <img id="f-logo" src="/img/logo-SC.svg" alt="">
+      </div>
+      <div class="d-flex social-block col-6 col-md-4">
+        <div class="row" style="margin:0;">
+          <a href="/" class="social"><img src="/img/inst.svg" alt=""></a>
+          <a href="/" class="social"><img src="/img/tlgr.svg" alt=""></a>
+          <a href="/" class="social"><img src="/img/link.svg" alt=""></a>
+          <a href="/" class="social"><img src="/img/face.svg" alt=""></a>
+        </div>
+        <div class="row" style="margin:0;font-size: 15px;">
+          <p>@IASA Student Council. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+@endsection
+
+@section('tasks')
+<div class="modal" id="modal1">
+  <div class="modal-header">
+    <div class="modal-title">Ребус</div>
+    <button class="close-button" data-close-button>&times;</button>
+  </div>
+  <div class="modal-body">
+    <img alt="" class="task1" src="/img/Task1.svg">
+  </div>
+  <form class="modal-form" action="{{ route() }}">
+    <label for="1">Ответ: <input class="answer" id="ans1" name="anwser1" type="text"></label>
+    <input class="submit" type="submit" value="Отправить">
+  </form>
+</div>
+<div id="overlay"></div>
+
+<!--Book-->
+<div class="modal" id="modal2">
+  <div class="modal-header">
+    <div class="modal-title">Книга всем книгам</div>
+    <button class="close-button" data-close-button>&times;</button>
+  </div>
+  <div class="modal-body">
+    <p class="task2txt">“Всякий просящий получает, и ищущий находит” <br>Евангелие от Луки 11 стих 10</p>
+    <img src="/img/Task2.svg" class="task2" alt="">
+  </div>
+  <form class="modal-form" action="{{ route() }}">
+    <label for="1">Ответ: <input class="answer" id="ans1" name="anwser1" type="text"></label>
+    <input class="submit" type="submit" value="Отправить">
+  </form>
+</div>
+
+<!--QE-->
+<div class="modal" id="modal3">
+  <div class="modal-header">
+    <div class="modal-title">Где-то я эту штуку видел</div>
+    <button class="close-button" data-close-button>&times;</button>
+  </div>
+  <div class="modal-body">
+    <img alt="" class="task3" src="/img/Task3.png">
+  </div>
+  <form class="modal-form" action="/action_page.php">
+    <label for="1">Ответ: <input class="answer" id="ans1" name="anwser1" type="text"></label>
+    <input class="submit" type="submit" value="Отправить">
+  </form>
+</div>
+</div>
+@endsection
+
+@section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{{ script("/tabs.js") }}
+{{ script("/menu.js") }}
+{{ script("/timer.js") }}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script type="text/javascript">
+  $(".main-carousel").flickity({
+    cellAlign: 'left',
+    contain: true
+  });
+</script>
 @endsection
