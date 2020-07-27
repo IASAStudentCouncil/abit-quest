@@ -4,6 +4,8 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
+const Task = use('App/Models/Task')
+
 /**
  * Resourceful controller for interacting with tasks
  */
@@ -19,7 +21,12 @@ class TaskController {
    */
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
-    return view.render('pages.tasks.index', {user: user})
+    const now = Date.now()
+    const tasks_available = await Task.query()
+                                      .where('started_at', '<', now)
+                                      .fetch()
+
+    return view.render('pages.tasks.index', {user: user, tasks: tasks_available})
   }
 
   /**
