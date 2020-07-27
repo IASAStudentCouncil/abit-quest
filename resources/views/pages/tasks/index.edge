@@ -32,100 +32,6 @@ Task Hub
 
 @section('content')
 <main class="d-block">
-  <!--
-  <div class="container-md main-carousel d-block d-lg-none">
-    <div class="task-block carousel-cell container-fluid">
-      <div class="task-block__header row">
-        <div class="col-12">
-          <h2 class="task_num" id="locked">Level 1</h2>
-        </div>
-        <div class="col-12">
-          <img alt="ПТУшник" class="task_lvl" src="/img/1_locked.svg">
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal1" id="active1">I</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal2" id="active1">II</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal3" id="active1">III</a>
-        </div>
-      </div>
-    </div>
-    <div class="task-block carousel-cell container-fluid">
-      <div class="task-block__header row">
-        <div class="col-12">
-          <h2 class="task_num" id="locked">Level 2</h2>
-        </div>
-        <div class="col-12">
-          <img alt="" class="task_lvl" src="/img/2_locked.svg">
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal4" id="active2">IV</a></div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal5" id="active2">V</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal6" id="active2">VI</a>
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal7" id="active2">VII</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal8" id="active2">VIII</a>
-        </div>
-      </div>
-    </div>
-    <div class="task-block carousel-cell container-fluid">
-      <div class="task-block__header row">
-        <div class="col-12">
-          <h2 class="task_num" id="locked">Level 3</h2>
-        </div>
-        <div class="col-12">
-          <img alt="" class="task_lvl" src="/img/3_locked.svg">
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal9" id="active3">IX</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal10" id="active3">X</a>
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal11" id="active3">XI</a>
-        </div>
-        <div class="task-holder col-4">
-          <a class="task" href"#modal12" id="active3">XII</a>
-        </div>
-      </div>
-    </div>
-    <div class="task-block carousel-cell container-fluid">
-      <div class="task-block__header">
-        <div class="col-12">
-          <h2 class="task_num" id="locked">Level 4</h2>
-        </div>
-        <div class="col-12">
-          <img alt="" class="task_lvl" ="/img/4_locked.svg">
-        </div>
-      </div>
-      <div class="task-block__inner row">
-        <div class="task-holder col-4">
-          <a class="task" href"#modal13" id="active3">XIII</a>
-        </div>
-      </div>
-    </div>
-  </div>
--->
   <div class="container-md d-none d-lg-block">
     <div class="task-block container-fluid">
       <div class="task-block__header row">
@@ -138,13 +44,13 @@ Task Hub
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">I</a>
+          <a class="task" href="{{ tasks[0] ? tasks[0].slug : "" }}" id="{{ tasks[0] ? "active1" : "locked" }}">I</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">II</a>
+          <a class="task" href="{{ tasks[1] ? tasks[1].slug : "" }}" id="{{ tasks[1] ? "active1" : "locked" }}">II</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">III</a>
+          <a class="task" href="{{ tasks[2] ? tasks[2].slug : "" }}" id="{{ tasks[2] ? "active1" : "locked" }}">III</a>
         </div>
       </div>
     </div>
@@ -159,20 +65,20 @@ Task Hub
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">IV</a></div>
+          <a class="task" href="{{ tasks[3] ? tasks[3].slug : "" }}" id="{{ tasks[3] ? "active2" : "locked" }}">IV</a></div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">V</a>
+          <a class="task" href="{{ tasks[4] ? tasks[4].slug : "" }}" id="{{ tasks[4] ? "active2" : "locked" }}">V</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">VI</a>
+          <a class="task" href="{{ tasks[5] ? tasks[5].slug : "" }}" id="{{ tasks[5] ? "active2" : "locked" }}">VI</a>
         </div>
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">VII</a>
+          <a class="task" href="{{ tasks[6] ? tasks[6].slug : "" }}" id="{{ tasks[6] ? "active2" : "locked" }}">VII</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="">VIII</a>
+          <a class="task" href="{{ tasks[7] ? tasks[7].slug : "" }}" id="{{ tasks[7] ? "active2" : "locked" }}">VIII</a>
         </div>
       </div>
     </div>
@@ -187,18 +93,18 @@ Task Hub
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="active3">IX</a>
+          <a class="task" href="{{ tasks[8] ? tasks[8].slug : "" }}" id="{{ tasks[8] ? "active3" : "locked" }}">IX</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="active3">X</a>
+          <a class="task" href="{{ tasks[9] ? tasks[9].slug : "" }}" id="{{ tasks[9] ? "active3" : "locked" }}">X</a>
         </div>
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="active3">XI</a>
+          <a class="task" href="{{ tasks[10] ? tasks[10].slug : "" }}" id="{{ tasks[10] ? "active3" : "locked" }}">XI</a>
         </div>
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="active3">XII</a>
+          <a class="task" href="{{ tasks[11] ? tasks[11].slug : "" }}" id="{{ tasks[11] ? "active3" : "locked" }}">XII</a>
         </div>
       </div>
     </div>
@@ -213,7 +119,7 @@ Task Hub
       </div>
       <div class="task-block__inner row">
         <div class="task-holder col-4">
-          <a class="task" href="{{}}" id="active3">XIII</a>
+          <a class="task" href="{{ tasks[12] ? tasks[12].slug : "" }}" id="{{ tasks[12] ? "active3" : "locked" }}">XIII</a>
         </div>
       </div>
     </div>
@@ -225,7 +131,7 @@ Task Hub
   <div class="container-md">
     <div class="row">
       <div class="col-auto">
-        <img id="f-logo" src="/img/logo-SC.svg" alt="">
+        <img id="f-logo" src="/img/logo-sc.svg" alt="">
       </div>
       <div class="d-flex social-block col-6 col-md-4">
         <div class="row" style="margin:0;">
