@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'А все ли так двоично?'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <img src="/img/task4.svg" class="task-image" alt="">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

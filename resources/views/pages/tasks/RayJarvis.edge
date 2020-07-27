@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Цезарь говорит'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <img src="/img/task5.svg" class="task-images" alt="">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection
