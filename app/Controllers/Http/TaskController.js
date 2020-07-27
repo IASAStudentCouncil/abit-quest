@@ -23,11 +23,26 @@ class TaskController {
     const user = await auth.getUser()
     const now = Date.now()
     const tasks_serialized = await Task.query()
-                                      .where('started_at', '<', now)
-                                      .fetch()
+                                        .where('started_at', '<', now)
+                                        .fetch()
 
 
     return view.render('pages.tasks.index', {user: user, tasks: tasks_serialized.toJSON()})
+  }
+
+  async check({ auth, params, request, response }) {
+    const user = auth.getUser()
+    const { slug } = params
+    const task_requested = await Task.query()
+                                     .where('slug','=', slug)
+                                     .fetch()
+    const answer = request.input('answer')
+    if (!task_requested.toJSON()["is_manual"] && task_requested.toJSON()["answer"] === answer) {
+      await user.tasks().create(task_requested.toJSON())
+      return response.route("tasks.index")
+    } else {
+      return response.route("tasks.show." + slug)
+    }
   }
 
   /**
