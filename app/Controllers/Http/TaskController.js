@@ -22,11 +22,12 @@ class TaskController {
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
     const now = Date.now()
-    const tasks_available = await Task.query()
+    const tasks_serialized = await Task.query()
                                       .where('started_at', '<', now)
                                       .fetch()
 
-    return view.render('pages.tasks.index', {user: user, tasks: tasks_available})
+
+    return view.render('pages.tasks.index', {user: user, tasks: tasks_serialized.toJSON()})
   }
 
   /**
