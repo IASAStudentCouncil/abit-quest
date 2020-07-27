@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Неумелый кодер'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <p class="task7">Введите без ошибок: 3301IASA</p>
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

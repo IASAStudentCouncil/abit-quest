@@ -1,0 +1,27 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Wake up, samurai, it`s time to code'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <code class="task-text">
+      @raw
+        int a = 9, b = 5, c = 13; <br>
+        int d = 2, k = 3, e = 2, result = 0; <br>
+        <br>
+        if (a^b == c || d|k == e) { <br>
+          &emsp;result = e&lt;&lt;c; <br>
+        } else { <br>
+          &emsp;result = e&c; <br>
+        } <br>
+
+      @endraw
+    </code>
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

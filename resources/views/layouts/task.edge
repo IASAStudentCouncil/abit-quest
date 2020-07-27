@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>
+    @!section('title')
+    | IASA ABIT QUEST 2020
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  
+  {{ style('/style.css') }}
+  {{ style('/fonts/sfui.css') }}
+  <style type="text/css">
+    .task7 {
+      color: transparent;
+      /*color: #FFF;*/
+    }
+  </style>
+</head>
+<body>
+  <div class="task-widget">
+    @!section("task-header")
+    @!section("task-body")
+    @!section("task-form")
+  </div>
+</body>
+</html>

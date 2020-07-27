@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Где-то я эту штуку видел'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <img alt="" class="task-image" src="/img/task3.png">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection
