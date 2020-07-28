@@ -58,7 +58,7 @@ class User extends Model {
    */
   tasks() {
     return this
-      .belongsToMany('App/Models/Tasks')
+      .belongsToMany('App/Models/Task')
       .withPivot(['answer', 'answered_at', 'checked', 'checked_at'])
       .withTimestamps()
   }

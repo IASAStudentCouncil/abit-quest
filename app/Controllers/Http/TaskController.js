@@ -28,11 +28,12 @@ class TaskController {
   }
 
   async answer({ auth, params, request, response }) {
-    const user = auth.getUser()
     const { slug } = params
-    const task = await Task.findBy('slug', slug)
     const answer = request.input('answer')
-    console.log(task.is_manual, task.answer)
+
+    const user = await auth.getUser()
+    const task = await Task.findBy('slug', slug)
+
     if (!task.is_manual && task.answer === answer) {
       await user.tasks().create(task.toJSON())
       return response.route("tasks.index")
@@ -74,10 +75,9 @@ class TaskController {
    * @param {View} ctx.view
    */
   async show({ auth, params, request, response, view }) {
-    console.log(params)
     const { slug } = params
 
-    const user = auth.getUser()
+    const user = await auth.getUser()
     const task = await Task.findBy('slug', slug)
 
     if (!task) {
