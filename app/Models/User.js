@@ -24,7 +24,7 @@ class User extends Model {
   }
 
 
-  getRank (rank) {
+  getRank(rank) {
     const ranksDict = {
       'student_ptu': 'Студент ПТУ',
       'kpishnik': 'КПИшник',
@@ -57,7 +57,10 @@ class User extends Model {
    * @return {Object}
    */
   tasks() {
-    return this.hasMany('App/Models/Tasks')
+    return this
+      .belongsToMany('App/Models/Task')
+      .withPivot(['answer', 'answered_at', 'checked', 'checked_at'])
+      .withTimestamps()
   }
 }
 

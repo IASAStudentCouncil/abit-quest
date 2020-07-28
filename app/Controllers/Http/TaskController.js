@@ -22,11 +22,24 @@ class TaskController {
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
     const now = Date.now()
-    const tasks_available = await Task.query()
-                                      .where('started_at', '<', now)
-                                      .fetch()
+    const tasks_serialized = await Task.query().where('started_at', '<', now).fetch()
 
-    return view.render('pages.tasks.index', {user: user, tasks: tasks_available})
+    return view.render('pages.tasks.index', { user: user, tasks: tasks_serialized.toJSON() })
+  }
+
+  async answer({ auth, params, request, response }) {
+    const { slug } = params
+    const answer = request.input('answer')
+
+    const user = await auth.getUser()
+    const task = await Task.findBy('slug', slug)
+
+    if (!task.is_manual && task.answer === answer) {
+      await user.tasks().create(task.toJSON())
+      return response.route("tasks.index")
+    } else {
+      return response.route("tasks.show." + slug)
+    }
   }
 
   /**
@@ -61,9 +74,22 @@ class TaskController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {
-    const { slug } = params;
-    return view.render('pages.tasks.' + slug)
+  async show({ auth, params, request, response, view }) {
+    const { slug } = params
+
+    const user = await auth.getUser()
+    const task = await Task.findBy('slug', slug)
+
+    if (!task) {
+      return response.sendStatus(404)
+    }
+
+    const hasTask = await user.tasks().where('slug', slug).getCount()
+    if (!hasTask) {
+      user.tasks().attach([task.id])
+    }
+
+    return view.render('pages.tasks.' + task.slug)
   }
 
   /**
