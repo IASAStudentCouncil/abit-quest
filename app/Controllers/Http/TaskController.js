@@ -74,11 +74,11 @@ class TaskController {
    * @param {View} ctx.view
    */
   async show({ auth, params, request, response, view }) {
+    console.log(params)
     const { slug } = params
 
     const user = auth.getUser()
     const task = await Task.findBy('slug', slug)
-    console.log(task.slug, task.answer, task.is_manual)
 
     if (!task) {
       return response.sendStatus(404)
