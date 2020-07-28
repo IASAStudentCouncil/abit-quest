@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Жмакай на кнопку'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <img src="/img/button.svg" class="task-image" alt="">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

@@ -1,0 +1,16 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Книга всем книгам'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <p class="task-text">“Всякий просящий получает, и ищущий находит” <br>Евангелие от Луки 11 стих 10</p>
+    <img src="/img/task2.svg" class="task-image" alt="">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

@@ -1,0 +1,15 @@
+@layout("layouts.task")
+
+@section("task-header")
+  @!component("components.task-header", {text: 'Ребус'})
+@endsection
+
+@section("task-body")
+  <div class="task-body">
+    <img alt="" class="task-image" src="/img/task1.svg">
+  </div>
+@endsection
+
+@section("task-form")
+  @!component("components.task-form", {action: ''})
+@endsection

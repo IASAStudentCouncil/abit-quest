@@ -13,7 +13,7 @@ class AllowGuestOnly {
   async handle({ request, auth, response }, next) {
     try {
       await auth.check()
-      response.route('index')
+      response.route('tasks.index')
     }
     catch {
       // call next to advance the request
