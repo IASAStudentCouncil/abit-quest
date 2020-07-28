@@ -84,7 +84,7 @@ class TaskController {
       return response.sendStatus(404)
     }
 
-    const hasTask = await user.tasks().where('id', task.id).getCount()
+    const hasTask = await user.tasks().where('slug', slug).getCount()
     if (!hasTask) {
       user.tasks().attach([task.id])
     }
