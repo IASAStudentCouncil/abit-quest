@@ -73,7 +73,7 @@ class UserController {
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
 
-    return view.render("pages.users.show", { user, top_users: ratingList })
+    return view.render("pages.users.show", { user: user.toJSON(), top_users: ratingList })
   }
 
   /**
