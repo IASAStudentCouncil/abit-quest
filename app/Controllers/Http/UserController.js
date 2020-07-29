@@ -63,9 +63,11 @@ class UserController {
       return response.status(404)
     }
 
+    // get top-5 users
+    const ratingList = await User.query().orderBy('')
 
     const score = await user.score()
-    return view.render("pages.users.show", { user: { ...user, score } })
+    return view.render("pages.users.show", { user: { ...user, score } }, ratingList:ratingList)
   }
 
   /**
