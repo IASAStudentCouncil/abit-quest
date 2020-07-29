@@ -65,7 +65,7 @@ class UserController {
 
     // get top-5 users
     const ratingList = await User.all()
-    ratingList.map(user => { ...user, score: user.score()})            // use score calculation
+    ratingList.map(user => { ...user, score: await user.score()})            // use score calculation
               .sort( (userA, userB) =>  userB.score - userA.score)     // desc order
               .slice(0, 5)                                             // get only 5
 

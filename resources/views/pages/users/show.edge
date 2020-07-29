@@ -71,42 +71,20 @@ Personal page
               </div>
               <div class="row"><h1 class="heading_holder">ДОСКА ПОЧЕТА</h1></div>
               <table id="users-table" class="users-table">
-               <tr>
-                 <th>Ранг</th>
-                 <th>Пользователь</th>
-                 <th>Задачи</th>
-                 <th>Баллы</th>
-               </tr>
-               <tr>
-                 <td>1</td>
-                 <td>Пользователь_1</td>
-                 <td>13</td>
-                 <td>200</td>
-               </tr>
-               <tr>
-                 <td>2</td>
-                 <td>Пользователь_2</td>
-                 <td>8</td>
-                 <td>100</td>
-               </tr>
-               <tr>
-                 <td>3</th>
-                 <td>Пользователь_3</th>
-                 <td>6</th>
-                 <td>40</th>
-               </tr>
-               <tr>
-                 <td>4</th>
-                 <td>юзер 4</th>
-                 <td>1</th>
-                 <td>15</th>
-               </tr>
-               <tr>
-                 <td>5</th>
-                 <td>Пользователь_5</th>
-                 <td>1</th>
-                 <td>5</th>
-               </tr>
+                <tr>
+                  <th>Ранг</th>
+                  <th>Пользователь</th>
+                  <th>Задачи</th>
+                  <th>Баллы</th>
+                </tr>
+                @each(user in top_users)
+                  <tr>
+                    <td>{{ ($loop.index + 1) }}</td>
+                    <td>{{ (user.getUsername()) }}</td>
+                    <td>{{ (user.tasks().lenght) }}</td>
+                    <td>{{ (user.score) }}</td>
+                  </tr>
+                @endeach
               </table>
             </div>
             <div class="d-none row cab-tab container-fluid" id="cab-tabs-2">
