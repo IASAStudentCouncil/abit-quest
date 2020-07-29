@@ -59,12 +59,13 @@ class UserController {
     const current = await auth.getUser()
     const user = await User.find(id)
 
-    // const score = await user.score()
-
-    if (current.id != user.id) {
+    if (!user || !current || current.id != user.id) {
       return response.status(404)
     }
-    return view.render("pages.users.show", { user })
+
+
+    const score = await user.score()
+    return view.render("pages.users.show", { user: { ...user, score } })
   }
 
   /**

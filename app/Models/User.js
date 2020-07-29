@@ -63,8 +63,13 @@ class User extends Model {
       .withTimestamps()
   }
 
-  async score() {
-    return await this.tasks().fetch().then(tasks => tasks.rows.map((task) => task.score).reduce((sum, item) => sum + item))
+  score() {
+    return this.tasks().fetch()
+      .then(tasks =>
+        tasks.rows
+          // .map((task) => task.score)
+          .reduce((sum, task) => sum + task.score)
+      )
   }
 }
 
