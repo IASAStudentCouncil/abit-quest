@@ -34,7 +34,11 @@ class User extends Model {
     return ranksDict[rank]
   }
 
-
+  async getScore() {
+    const tasks = await user.tasks().select('score').fetch()
+    const score = tasks.toJSON().map((task) => task.score).reduce((sum, item) => sum + item)
+    return score;
+  }
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
