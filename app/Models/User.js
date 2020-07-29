@@ -35,6 +35,11 @@ class User extends Model {
   }
 
 
+  getUsername() {
+    const username = this.login.split("@")[0]
+    return username
+  }
+
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or

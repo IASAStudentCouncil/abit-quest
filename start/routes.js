@@ -32,7 +32,7 @@ Route.group(() => {
   Route.post('/tasks/:slug', 'TaskController.check').as('tasks.checks')
 
   Route.get('logout', 'LoginController.destroy').as('login.destroy')
-  Route.get('user/:id', 'UserController.show').as('user.show')
+  Route.get('users/:id', 'UserController.show').as('users.show')
 }).middleware(['auth'])
 
 Route.group(() => {
