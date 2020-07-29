@@ -62,6 +62,15 @@ class User extends Model {
       .withPivot(['answer', 'answered_at', 'checked', 'checked_at'])
       .withTimestamps()
   }
+
+  score() {
+    return this.tasks().fetch()
+      .then(tasks =>
+        tasks.rows
+          .map((task) => task.score)
+          .reduce((sum, item) => sum + item)
+      )
+  }
 }
 
 module.exports = User
