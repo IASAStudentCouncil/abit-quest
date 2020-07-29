@@ -67,12 +67,13 @@ class UserController {
     let ratingList = await User.query()
       .withCount('tasks')
       .fetch()
-    ratingList = ratingList.toJSON().map(async user => ({ ...user, score: await user.score() }))
+
+    console.log(ratingList.toJSON())
+    ratingList = ratingList.toJSON()
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
 
-    const score = await user.score()
-    return view.render("pages.users.show", { user: { ...user, score }, top_users: ratingList })
+    return view.render("pages.users.show", { user, top_users: ratingList })
   }
 
   /**

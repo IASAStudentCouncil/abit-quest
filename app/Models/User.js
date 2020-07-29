@@ -21,6 +21,15 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+
+    this.addHook('afterFetch', async (userInstances) => {
+      userInstances.forEach(userInstance => {
+        userInstance.score = await userInstance.score()
+      });
+    })
+    this.addHook('afterFind', async (userInstance) => {
+      userInstance.score = await userInstance.score()
+    })
   }
 
 
