@@ -80,9 +80,9 @@ Personal page
                 @each(user in top_users)
                   <tr>
                     <td>{{ ($loop.index + 1) }}</td>
-                    <td>{{ (user.getUsername()) }}</td>
+                    <td>{{ user.username }}</td>
                     <td>{{ (user.tasks().lenght) }}</td>
-                    <td>{{ (user.score) }}</td>
+                    <td>{{ user.score }}</td>
                   </tr>
                 @endeach
               </table>
