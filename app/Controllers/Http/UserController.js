@@ -64,8 +64,8 @@ class UserController {
     }
 
     // get top-5 users
-    const ratingList = await User.all()
-    ratingList.map(user => ({ ...user, score: await user.score() }))
+    let ratingList = await User.all()
+    ratingList = ratingList.toJSON().map(async user => ({ ...user, score: await user.score() }))
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
 
