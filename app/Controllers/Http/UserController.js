@@ -65,10 +65,10 @@ class UserController {
 
     // get top-5 users
     let ratingList = await User.query()
+      .where('is_admin', 0)
       .withCount('tasks')
       .fetch()
 
-    console.log(ratingList.toJSON())
     ratingList = ratingList.toJSON()
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
