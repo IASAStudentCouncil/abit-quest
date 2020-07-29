@@ -64,7 +64,9 @@ class UserController {
     }
 
     // get top-5 users
-    let ratingList = await User.all()
+    let ratingList = await User.query()
+      .withCount('tasks')
+      .fetch()
     ratingList = ratingList.toJSON().map(async user => ({ ...user, score: await user.score() }))
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
