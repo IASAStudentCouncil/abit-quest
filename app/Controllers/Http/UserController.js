@@ -64,13 +64,16 @@ class UserController {
     }
 
     // get top-5 users
-    const ratingList = await User.all()
-    ratingList.map(user => ({ ...user, score: await user.score() }))
+    let ratingList = await User.query()
+      .where('is_admin', 0)
+      .withCount('tasks')
+      .fetch()
+
+    ratingList = ratingList.toJSON()
       .sort((userA, userB) => userB.score - userA.score)
       .slice(0, 5)
 
-    const score = await user.score()
-    return view.render("pages.users.show", { user: { ...user, score }, top_users: ratingList })
+    return view.render("pages.users.show", { user: user.toJSON(), top_users: ratingList })
   }
 
   /**
