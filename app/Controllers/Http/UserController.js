@@ -60,12 +60,11 @@ class UserController {
     const user = await User.find(id)
 
     const score = await user.score()
-    console.log(score)
 
     if(current.id != user.id) {
       return response.status(404)
     }
-    return view.render("pages.users.show", {user: user})
+    return view.render("pages.users.show", {user: {...user, score}})
   }
 
   /**
