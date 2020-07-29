@@ -64,7 +64,7 @@ class User extends Model {
   }
 
   score() {
-    return this.tasks().fetch().then(tasks => tasks.map((task) => task.score).reduce((sum, item) => sum + item))
+    return this.tasks().fetch().then(tasks => tasks.rows.map((task) => task.score).reduce((sum, item) => sum + item))
   }
 }
 
