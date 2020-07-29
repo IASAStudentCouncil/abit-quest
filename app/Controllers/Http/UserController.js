@@ -65,12 +65,12 @@ class UserController {
 
     // get top-5 users
     const ratingList = await User.all()
-    ratingList.map(user => { ...user, score: await user.score()})            // use score calculation
-              .sort( (userA, userB) =>  userB.score - userA.score)     // desc order
-              .slice(0, 5)                                             // get only 5
+    ratingList.map(user => ({ ...user, score: await user.score() }))            // use score calculation
+      .sort((userA, userB) => userB.score - userA.score)     // desc order
+      .slice(0, 5)                                             // get only 5
 
     const score = await user.score()
-    return view.render("pages.users.show", { user: { ...user, score }, top_users:ratingList })
+    return view.render("pages.users.show", { user: { ...user, score }, top_users: ratingList })
   }
 
   /**
