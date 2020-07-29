@@ -81,7 +81,7 @@ Personal page
                   <tr>
                     <td>{{ ($loop.index + 1) }}</td>
                     <td>{{ user.username }}</td>
-                    <td>{{ user.tasks_count }}</td>
+                    <td>{{ user.__meta__.tasks_count }}</td>
                     <td>{{ user.score }}</td>
                   </tr>
                 @endeach

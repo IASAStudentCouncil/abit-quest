@@ -23,15 +23,18 @@ class User extends Model {
     })
 
     this.addHook('afterFetch', async (userInstances) => {
-      userInstances.forEach(userInstance => {
+      for (const userInstance of userInstances) {
         userInstance.score = await userInstance.score()
-      });
+      };
     })
     this.addHook('afterFind', async (userInstance) => {
       userInstance.score = await userInstance.score()
     })
   }
 
+  static get computed() {
+    return ['username']
+  }
 
   getRank(rank) {
     const ranksDict = {
@@ -44,8 +47,8 @@ class User extends Model {
   }
 
 
-  getUsername() {
-    const username = this.login.split("@")[0]
+  getUsername({ login }) {
+    const username = login.split("@")[0]
     return username
   }
 
@@ -82,7 +85,7 @@ class User extends Model {
       .then(tasks =>
         tasks.rows
           .map((task) => task.score)
-          .reduce((sum, item) => sum + item)
+          .reduce((sum, item) => sum + item, 0)
       )
   }
 }
