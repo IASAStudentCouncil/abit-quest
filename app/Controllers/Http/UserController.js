@@ -19,7 +19,7 @@ class UserController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index({ request, response, view }) {
   }
 
   /**
@@ -31,7 +31,7 @@ class UserController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create({ request, response, view }) {
   }
 
   /**
@@ -42,7 +42,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store({ request, response }) {
   }
 
   /**
@@ -54,17 +54,17 @@ class UserController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ auth, params, request, response, view }) {
+  async show({ auth, params, request, response, view }) {
     const { id } = params
     const current = await auth.getUser()
     const user = await User.find(id)
 
-    const score = await user.score()
+    // const score = await user.score()
 
-    if(current.id != user.id) {
+    if (current.id != user.id) {
       return response.status(404)
     }
-    return view.render("pages.users.show", {user: {...user, score}})
+    return view.render("pages.users.show", { user })
   }
 
   /**
@@ -76,7 +76,7 @@ class UserController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
+  async edit({ params, request, response, view }) {
   }
 
   /**
@@ -87,7 +87,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response }) {
   }
 
   /**
@@ -98,7 +98,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy({ params, request, response }) {
   }
 
   /**
@@ -109,7 +109,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async online ({params, request, response }) {
+  async online({ params, request, response }) {
     const user = await User.find(params.id)
     user.updated_at = new Date()
     await user.save()
