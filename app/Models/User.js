@@ -34,11 +34,7 @@ class User extends Model {
     return ranksDict[rank]
   }
 
-  async getScore() {
-    const tasks = await user.tasks().select('score').fetch()
-    const score = tasks.toJSON().map((task) => task.score).reduce((sum, item) => sum + item)
-    return score;
-  }
+
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
@@ -65,6 +61,10 @@ class User extends Model {
       .belongsToMany('App/Models/Task')
       .withPivot(['answer', 'answered_at', 'checked', 'checked_at'])
       .withTimestamps()
+  }
+
+  score() {
+    return this.tasks().then(tasks => tasks.map((task) => task.score).reduce((sum, item) => sum + item))
   }
 }
 

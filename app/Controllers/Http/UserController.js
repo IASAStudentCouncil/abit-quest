@@ -55,7 +55,16 @@ class UserController {
    * @param {View} ctx.view
    */
   async show ({ auth, params, request, response, view }) {
-    const user = await auth.getUser()
+    const { id } = params
+    const current = await auth.getUser()
+    const user = await User.find(id)
+
+    const score = await user.score()
+    console.log(score)
+
+    if(current.id != user.id) {
+      return response.status(404)
+    }
     return view.render("pages.users.show", {user: user})
   }
 
