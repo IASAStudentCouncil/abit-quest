@@ -16,7 +16,7 @@ Task Hub
     </div>
     <div class="profile-link col-3">
       <div class="row">
-        <a class="personal_cab" href="{{ "/users/" + user.id.toString() }}">
+        <a class="personal_cab" href="{{ route('users.show', {id: user.id}) }}">
           <div class="avatar-holder col-auto col-md-auto">
             <img alt="" class="avatar" src="{{ user.photo_url }}">
           </div>

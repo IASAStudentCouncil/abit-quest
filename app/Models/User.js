@@ -21,8 +21,20 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+
+    this.addHook('afterFetch', async (userInstances) => {
+      for (const userInstance of userInstances) {
+        userInstance.score = await userInstance.score()
+      };
+    })
+    this.addHook('afterFind', async (userInstance) => {
+      userInstance.score = await userInstance.score()
+    })
   }
 
+  static get computed() {
+    return ['username']
+  }
 
   getRank(rank) {
     const ranksDict = {
@@ -35,8 +47,8 @@ class User extends Model {
   }
 
 
-  getUsername() {
-    const username = this.login.split("@")[0]
+  getUsername({ login }) {
+    const username = login.split("@")[0]
     return username
   }
 

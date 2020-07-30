@@ -64,30 +64,16 @@ class UserController {
     }
 
     // get top-5 users
-    let all_users = await User.query().with('tasks').withCount('tasks as tasks_count').fetch()
-    let top_users = []
-    let i = 0
-    for (let user of all_users.rows) {
-      let username = await user.getUsername()
-      let score = await user.score()
-      top_users[i] = { ...(user.toJSON()), score, username }
-      i++
-    }
+    let ratingList = await User.query()
+      .where('is_admin', 0)
+      .withCount('tasks')
+      .fetch()
 
-    //ratingList.map( (user) => ({...(user.toJSON()), username: user.getUsername() , score: user.score(), tasks_count: user.tasks().length }) ).sort( (userA, userB) => userB.score - userA.score).slice(0, 5)
-    const top_5 = top_users.sort( (userA, userB) => userB.score - userA.score ).slice(0, 5)
-    console.log(top_5)
+    ratingList = ratingList.toJSON()
+      .sort((userA, userB) => userB.score - userA.score)
+      .slice(0, 5)
 
-    const score = await user.score()
-    const username = await user.getUsername()
-    return view.render("pages.users.show", {
-      user: {
-        ...(user.toJSON()),
-        score,
-        username,
-      },
-      top_5
-    })
+    return view.render("pages.users.show", { user: user.toJSON(), top_users: ratingList })
   }
 
   /**
