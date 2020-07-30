@@ -73,7 +73,7 @@ class User extends Model {
       .then(tasks =>
         tasks.rows
           .map((task) => task.score)
-          .reduce((sum, item) => sum + item)
+          .reduce((sum, item) => sum + item, 0)
       )
   }
 }

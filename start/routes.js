@@ -29,10 +29,10 @@ Route.group(() => {
   Route.get('/user/:id/online', 'UserController.online').as('user.online')
   Route.get('/tasks', 'TaskController.index').as('tasks.index')
   Route.get('/tasks/:slug', 'TaskController.show').as('tasks.show')
-  Route.post('/tasks/:slug', 'TaskController.check').as('tasks.checks')
+  Route.post('/tasks/:slug', 'TaskController.answer').as('tasks.answer')
 
   Route.get('logout', 'LoginController.destroy').as('login.destroy')
-  Route.get('user/:id', 'UserController.show').as('user.show')
+  Route.get('users/:id', 'UserController.show').as('user.show')
 }).middleware(['auth'])
 
 Route.group(() => {
