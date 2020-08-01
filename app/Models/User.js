@@ -81,7 +81,7 @@ class User extends Model {
   }
 
   score() {
-    return this.tasks().fetch()
+    return this.tasks().wherePivot('checked', true).fetch()
       .then(tasks =>
         tasks.rows
           .map((task) => task.score)

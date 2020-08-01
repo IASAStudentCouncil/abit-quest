@@ -32,6 +32,98 @@ Task Hub
 
 @section('content')
 <main class="d-block">
+  <div class="container-md main-carousel d-block d-lg-none">
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 1</h2>
+        </div>
+        <div class="col-12">
+          <img alt="ПТУшник" class="task_lvl" src="img/1_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[0] ? tasks[0].slug : "" }}" id="{{ tasks[0] ? "active1" : "closed" }}">I</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[1] ? tasks[1].slug : "" }}" id="{{ tasks[1] ? "active1" : "closed" }}">II</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[2] ? tasks[2].slug : "" }}" id="{{ tasks[2] ? "active1" : "closed" }}">III</a>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 2</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="img/2_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[3] ? tasks[3].slug : "" }}" id="{{ tasks[3] ? "active2" : "closed" }}">IV</a></div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[4] ? tasks[4].slug : "" }}" id="{{ tasks[4] ? "active2" : "closed" }}">V</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[5] ? tasks[5].slug : "" }}" id="{{ tasks[5] ? "active2" : "closed" }}">VI</a>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[6] ? tasks[6].slug : "" }}" id="{{ tasks[6] ? "active2" : "closed" }}">VII</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[7] ? tasks[7].slug : "" }}" id="{{ tasks[7] ? "active2" : "closed" }}">VIII</a>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header row">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 3</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="img/3_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[8] ? tasks[8].slug : "" }}" id="{{ tasks[8] ? "active3" : "closed" }}">IX</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[9] ? tasks[9].slug : "" }}" id="{{ tasks[9] ? "active3" : "closed" }}">X</a>
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[10] ? tasks[10].slug : "" }}" id="{{ tasks[10] ? "active3" : "closed" }}">XI</a>
+        </div>
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[11] ? tasks[11].slug : "" }}" id="{{ tasks[11] ? "active3" : "closed" }}">XII</a>
+        </div>
+      </div>
+    </div>
+    <div class="task-block carousel-cell container-fluid">
+      <div class="task-block__header">
+        <div class="col-12">
+          <h2 class="task_num" id="locked">Level 4</h2>
+        </div>
+        <div class="col-12">
+          <img alt="" class="task_lvl" src="img/4_locked.svg">
+        </div>
+      </div>
+      <div class="task-block__inner row">
+        <div class="task-holder col-4">
+          <a class="task" href="/tasks/{{ tasks[12] ? tasks[12].slug : "" }}" id="{{ tasks[12] ? "active3" : "closed" }}">XIII</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-md d-none d-lg-block">
     <div class="task-block container-fluid">
       <div class="task-block__header row">
