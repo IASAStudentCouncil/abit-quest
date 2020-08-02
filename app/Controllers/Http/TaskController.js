@@ -24,7 +24,7 @@ class TaskController {
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
 
-    const tasks_serialized = await Task.query().where('started_at', '>', moment()).fetch()
+    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('started_at').fetch()
     return view.render('pages.tasks.index', { user: user.toJSON(), tasks: tasks_serialized.toJSON() })
   }
 
