@@ -6,7 +6,7 @@
 
 const Task = use('App/Models/Task')
 
-const moment = use('moment')
+
 
 /**
  * Resourceful controller for interacting with tasks
@@ -24,7 +24,7 @@ class TaskController {
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
 
-    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('started_at').fetch()
+    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('id').fetch()
     return view.render('pages.tasks.index', { user: user.toJSON(), tasks: tasks_serialized.toJSON() })
   }
 
@@ -36,7 +36,25 @@ class TaskController {
     const task = await Task.findBy('slug', slug)
 
     if (!task.is_manual && task.answer === answer) {
-      await user.tasks().save(task)
+      await user.tasks().detach([task.id])
+      await user.tasks().attach(task.id, (row) => {
+        if (row.task_id == task.id) {
+          row.answer = answer
+          row.answered_at = new Date().toISOString()
+          row.checked = true
+        }
+      })
+
+      return response.route("tasks.index")
+    } else if (slug === "ChewyChewy" && task.is_manual) {
+      await user.tasks().detach([task.id])
+      await user.tasks().attach(task.id, (row) => {
+        if (row.task_id === task.id) {
+          row.answer = answer
+          row.answered_at = new Date().toISOString()
+        }
+      })
+
       return response.route("tasks.index")
     } else {
       return response.route("/tasks/" + slug)
