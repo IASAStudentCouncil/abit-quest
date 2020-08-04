@@ -120,7 +120,7 @@ class TaskSeeder {
       {
         name: "Это не картинка",
         slug: "LimpKnight",
-        answer: "FROM IASA WITH LOVE",
+        answer: "FROM_IASA_WITH_LOVE",
         score: 25,
         is_manual: false,
         //started_at: "2020-08-30 23:59:59",
