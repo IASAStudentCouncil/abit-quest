@@ -5,7 +5,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Task = use('App/Models/Task')
-
+const Database = use('Database')
 
 
 /**
