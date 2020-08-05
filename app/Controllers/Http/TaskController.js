@@ -6,8 +6,6 @@
 
 const Task = use('App/Models/Task')
 
-const mo
-
 /**
  * Resourceful controller for interacting with tasks
  */
