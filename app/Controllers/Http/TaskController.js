@@ -6,7 +6,7 @@
 
 const Task = use('App/Models/Task')
 
-const moment = use('moment')
+const mo
 
 /**
  * Resourceful controller for interacting with tasks
@@ -24,10 +24,17 @@ class TaskController {
   async index({ auth, request, response, view }) {
     const user = await auth.getUser()
 
-    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('started_at').fetch()
+    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('id').fetch()
     return view.render('pages.tasks.index', { user: user.toJSON(), tasks: tasks_serialized.toJSON() })
   }
 
+
+  /**
+   * Если answer != null && answered_at != null то имееться 3 состояния ответа
+   * 1. checked == true                         - ответ верный
+   * 2. checked == false && checked_at != null  - ответ неверный
+   * 3. checked == false && checked_at == null  - ответ на рассмотрении
+   */
   async answer({ auth, params, request, response }) {
     const { slug } = params
     const answer = request.input('answer')
@@ -35,12 +42,17 @@ class TaskController {
     const user = await auth.getUser()
     const task = await Task.findBy('slug', slug)
 
-    if (!task.is_manual && task.answer === answer) {
-      await user.tasks().save(task)
-      return response.route("tasks.index")
-    } else {
-      return response.route("/tasks/" + slug)
+    await user.tasks().pivotQuery()
+      .where('id', task.id)
+      .update({ answer: answer, answered_at: Date.now() })
+
+    if(!task.is_manual) {
+      await user.tasks().pivotQuery()
+      .where('id', task.id)
+      .update({ checked: answer == task.answer, checked_at: Date.now() })
     }
+
+    return response.route("tasks.index")
   }
 
   /**

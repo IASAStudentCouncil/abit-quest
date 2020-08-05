@@ -35,7 +35,7 @@ class TaskSeeder {
         answer: "Михаил",
         score: 5,
         is_manual: false,
-        started_at: "2020-08-01 23:59:59",
+        //started_at: "2020-08-01 23:59:59",
       },
       {
         name: "Где-то я эту штуку видел...",
@@ -43,7 +43,7 @@ class TaskSeeder {
         answer: "3301199726359",
         score: 5,
         is_manual: false,
-        started_at: "2020-08-02 23:59:59",
+        //started_at: "2020-08-02 23:59:59",
       },
       {
         name: "А все ли так двоично?",
@@ -51,7 +51,7 @@ class TaskSeeder {
         answer: "14",
         score: 10,
         is_manual: false,
-        started_at: "2020-08-09 23:59:59",
+        //started_at: "2020-08-09 23:59:59",
       },
       {
         name: "Цезарь говорит",
@@ -59,7 +59,7 @@ class TaskSeeder {
         answer: "пусть умолкнет всякий критик я системный аналитик",
         score: 10,
         is_manual: false,
-        started_at: "2020-08-09 23:59:59",
+        //started_at: "2020-08-09 23:59:59",
       },
       {
         name: "Жмакай на кнопку",
@@ -67,7 +67,7 @@ class TaskSeeder {
         answer: "enable",
         score: 10,
         is_manual: false,
-        started_at: "2020-08-09 23:59:59",
+        //started_at: "2020-08-09 23:59:59",
       },
       {
         name: "Неумелый верстальщик",
@@ -75,7 +75,7 @@ class TaskSeeder {
         answer: "3301IASA",
         score: 15,
         is_manual: false,
-        started_at: "2020-08-16 23:59:59",
+        //started_at: "2020-08-16 23:59:59",
       },
       {
         name: "Иголка в стоге сена",
@@ -83,7 +83,7 @@ class TaskSeeder {
         answer: "IASAisalifestyle",
         score: 15,
         is_manual: false,
-        started_at: "2020-08-16 23:59:59",
+        //started_at: "2020-08-16 23:59:59",
       },
       {
         name: "Часовая пиктограмма",
@@ -91,7 +91,7 @@ class TaskSeeder {
         answer: "аллилуия",
         score: 20,
         is_manual: false,
-        started_at: "2020-08-23 23:59:59",
+        //started_at: "2020-08-23 23:59:59",
       },
       {
         name: "Wake up, samurai",
@@ -99,7 +99,7 @@ class TaskSeeder {
         answer: "16384",
         score: 20,
         is_manual: false,
-        started_at: "2020-08-23 23:59:59",
+        //started_at: "2020-08-23 23:59:59",
       },
       {
         name: "Я спортсмен",
@@ -107,7 +107,7 @@ class TaskSeeder {
         answer: "",
         score: 20,
         is_manual: true,
-        started_at: "2020-08-23 23:59:59",
+        //started_at: "2020-08-23 23:59:59",
       },
       {
         name: "Почувствуй себя Богом",
@@ -115,15 +115,15 @@ class TaskSeeder {
         answer: "MATAN",
         score: 20,
         is_manual: false,
-        started_at: "2020-08-23 23:59:59",
+        //started_at: "2020-08-23 23:59:59",
       },
       {
         name: "Это не картинка",
         slug: "LimpKnight",
-        answer: "FROM IASA WITH LOVE",
+        answer: "FROM_IASA_WITH_LOVE",
         score: 25,
         is_manual: false,
-        started_at: "2020-08-30 23:59:59",
+        //started_at: "2020-08-30 23:59:59",
       },
     ]
 

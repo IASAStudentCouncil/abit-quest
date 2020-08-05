@@ -1,11 +1,8 @@
-var curr = new Date;
-var first = curr.getDate() - curr.getDay();
-var last = first + 8;
+var date = new Date("27 Aug 2020 00:00:00 GMT+3")
+console.log(date)
 var bool = true;
 
-var countDownDate = new Date(curr.setDate(last));
-countDownDate.setHours(0,0,0,0);
-countDownDate = countDownDate.getTime();
+var countDownDate = date.getTime();
 
 var x = setInterval(function() {
 

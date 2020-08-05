@@ -156,6 +156,10 @@ b {
   #tabs-2 .text p {
     margin-top: 0px;
   }
+
+  .task-widget {
+    overflow-y: hidden !important;
+  }
 }
 
 @media (min-width: 1200px) {}
@@ -1209,16 +1213,14 @@ svg {
 
 .task-widget {
   display: block;
-  min-height: 50vh;
-  height: 75vh;
+  min-height: 60vh;
+  max-height: 90vh;
   width: 80vw;
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: 200ms ease-in-out;
-  transition: 200ms ease-in-out;
   border: 0px solid;
   border-radius: 10px;
   z-index: 10;
@@ -1246,6 +1248,7 @@ svg {
 
 
 .task-header {
+  height: 10vh;
   padding: 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1280,6 +1283,7 @@ svg {
 }
 
 .task-body {
+  min-height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1293,8 +1297,32 @@ svg {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 10px 15px;
+  padding: 1em;
   font: 1.2em;
+}
+
+.task-text-justify {
+  text-align: center;
+}
+
+.task-body .task-text {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+code.task-text {
+  color: #fff;
+
+}
+
+.task-body .task-text-secondary {
+  font-size: 0.6em;
+  line-height: 1.5;
+}
+
+.task-image {
+  height: auto;
+  width: 80%;
 }
 
 .task1 {
@@ -1303,9 +1331,10 @@ svg {
   margin-bottom: 30px;
 }
 
-.task2 {
-  width: 80%;
-  height: auto;
+.task-fix-image {
+  height: 35vh;
+  width: auto;
+  margin: 0;
 }
 
 .task2txt {
@@ -1464,6 +1493,7 @@ svg {
 }
 
 .task-form {
+  max-height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1477,7 +1507,7 @@ svg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px 15px;
+  padding: 1em;
 }
 
 .answer {
@@ -1499,8 +1529,8 @@ input.answer {
   margin: auto;
   border: double 1px transparent;
   border-radius: 10px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5C5C5C), to(#5C5C5C)), radial-gradient(circle at top left, #FFEA87, #FFF);
-  background-image: linear-gradient(#5C5C5C, #5C5C5C), radial-gradient(circle at top left, #FFEA87, #FFF);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5C5C5C), to(#5C5C5C)), radial-gradient(circle at top left, #FFEA87 ,#FFF);
+  background-image: linear-gradient(#5C5C5C, #5C5C5C), radial-gradient(circle at top left, #FFEA87 ,#FFF);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -1510,10 +1540,9 @@ input.answer {
   -ms-flex-line-pack: center;
       align-content: center;
   padding: 0 10px;
-  margin-bottom: 20px;
   color: #FFF;
   font-family: "SF UI Display", serif;
-  font-size: 1.5em;
+  font-size: 1.2em;
   background: #76797C;
   border: 1px solid #FFFFFF;
   border-radius: 25px;
