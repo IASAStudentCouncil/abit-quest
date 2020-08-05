@@ -10,9 +10,9 @@ class TaskUserSchema extends Schema {
       table.integer('user_id').unsigned()
       table.integer('task_id').unsigned()
       table.string('answer').nullable()
-      table.string('answered_at').nullable()
+      table.datetime('answered_at').nullable()
       table.boolean('checked').notNullable().defaultTo(false)
-      table.string('checked_at').nullable()
+      table.datetime('checked_at').nullable()
       table.timestamps()
     })
   }
