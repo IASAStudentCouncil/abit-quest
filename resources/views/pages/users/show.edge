@@ -12,7 +12,7 @@ Personal page
         <img src="/img/logo-horizontal.svg" alt="">
       </a>
     </div>
-    <div class="timer col-4">
+    <div class="timer col-5">
       <span class="timer__title">The next task will be available in:</span>
       <span class="timer__time" id="timer__time"></span>
     </div>
@@ -27,9 +27,9 @@ Personal page
       <!-- site menu/nav -->
       <ul id="cab-triggers" class="triggers-holder d-flex d-lg-none">
         <li id="cab-trigger" class="cab-trigger"><a href="{{ route("tasks.index") }}">ХАБ ЗАДАНИЙ</a></li>
-        <li id="cab-trigger-1" class="t-active cab-trigger">ОБЩАЯ СТАТИСТИИКА</li>
-        <li id="cab-trigger-2" class="cab-trigger">УВЕДОМЛЕНИЯ</li>
-        <li id="cab-trigger-3" class="cab-trigger">ПРАВИЛА</li>
+        <li id="cab-trigger-1" class="t-active cab-trigger"><a href="#stat">ОБЩАЯ СТАТИСТИИКА</a></li>
+        <li id="cab-trigger-2" class="cab-trigger"><a href="#notifications">УВЕДОМЛЕНИЯ</a></li>
+        <li id="cab-trigger-3" class="cab-trigger"><a href="#rules">ПРАВИЛА</a></li>
       </ul>
 
       <!-- nav-toggler for mobile version only -->
@@ -57,9 +57,9 @@ Personal page
         <div class="cab-tabs-holder container-fluid">
           <div class="row">
             <ul id="cab-triggers" class="triggers-holder row d-none d-sm-none d-md-nonde d-lg-flex justify-content-around">
-              <li id="m-cab-trigger-1" class="t-active cab-trigger col-auto">Общая статистика</li>
-              <li id="m-cab-trigger-2" class="cab-trigger col-auto">Уведомления</li>
-              <li id="m-cab-trigger-3" class="cab-trigger col-auto">Правила</li>
+              <li id="m-cab-trigger-1" class="t-active cab-trigger col-auto"><a href="#stat">Общая статистика</a></li>
+              <li id="m-cab-trigger-2" class="cab-trigger col-auto"><a href="#notifications">Уведомления</a></li>
+              <li id="m-cab-trigger-3" class="cab-trigger col-auto"><a href="#rules">Правила</a></li>
             </ul>
             <div class="cab-tab container-fluid" id="cab-tabs-1">
               <div class="row"><h1 class="heading_holder">ТВОЙ ПРОГРЕСС</h1></div>
@@ -70,22 +70,24 @@ Personal page
                 <span><h1 class="heading_holder">200</h1></span>
               </div>
               <div class="row"><h1 class="heading_holder">ДОСКА ПОЧЕТА</h1></div>
-              <table id="users-table" class="users-table">
-                <tr>
-                  <th>Ранг</th>
-                  <th>Пользователь</th>
-                  <th>Задачи</th>
-                  <th>Баллы</th>
-                </tr>
-                @each(user in top_users)
+              <div class="row">
+                <table id="users-table" class="users-table">
                   <tr>
-                    <td>{{ ($loop.index + 1) }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.__meta__.tasks_count }}</td>
-                    <td>{{ user.score }}</td>
+                    <th>Ранг</th>
+                    <th>Пользователь</th>
+                    <th>Задачи</th>
+                    <th>Баллы</th>
                   </tr>
-                @endeach
-              </table>
+                  @each(user in top_users)
+                    <tr>
+                      <td>{{ ($loop.index + 1) }}</td>
+                      <td>{{ user.username }}</td>
+                      <td>{{ user.__meta__.tasks_count }}</td>
+                      <td>{{ user.score }}</td>
+                    </tr>
+                  @endeach
+                </table>
+              </div>
             </div>
             <div class="d-none row cab-tab container-fluid" id="cab-tabs-2">
               <table id="notific-table" class="notific-table container-fluid">
@@ -100,7 +102,7 @@ Personal page
               <div class="container-fluid rules-block">
                 <p>1. Всего будет <b>13 заданий</b> разной сложности.</p>
                 <p>2. Доступ ко всем заданиям открыт с 7 до 27 августа</p>
-                <p>3. Ты получишь:
+                <p style="margin:0">3. Ты получишь:
                   <div class="rules-tasks">
                     <div class="circle">
                       <img src="/img/circle-r.svg" alt="">
