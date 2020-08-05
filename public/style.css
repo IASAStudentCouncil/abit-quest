@@ -15,162 +15,6 @@ b {
   font-family: "SF UI Display Medium";
 }
 
-@media (min-width: 500px) {
-  .cab-tab {
-    border-radius: 0 0 15px 15px;
-  }
-
-  #pers_footer {
-    margin-top: 20%;
-  }
-
-  .avatar {
-    width: auto !important;
-    height: 87% !important;
-  }
-
-  #users-table {
-    font-size: 18px;
-    line-height: 40px;
-  }
-
-  .task {
-    font-size: 64px;
-  }
-}
-
-@media (min-width: 768px) {
-  .users-table {
-    font-size: 14px !important;
-  }
-
-  .avatar {
-    width: auto;
-    height: 80%;
-  }
-
-  #notific-table {
-    margin-bottom: 0;
-  }
-
-  .users-table td, .users-table th {
-    padding: 5px 10px !important;
-  }
-
-  .users-table {
-    font-size: 19px;
-  }
-
-  .heading_holder {
-    font-size: 24px !important;
-  }
-
-  #tabs h1 {
-    font-size: 20px !important;
-  }
-
-  #pers_footer {
-    margin-top: 20%;
-  }
-
-  #tabs {
-    font-size: 14px !important;
-  }
-
-  .task {
-    height: 30vmin;
-    width: 30vmax;
-    font-size: 80px;
-  }
-}
-
-@media (min-height: 992px) {
-  .cab-tab {
-    border-radius: 0 0 15px 15px;
-  }
-
-  .task-block {
-    min-height: 78vh !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .personal_cab {
-    width: 60% !important;
-  }
-
-  .avatar {
-    width: auto;
-    height: 70%;
-  }
-
-  #pers_footer {
-    margin-top: 0%;
-  }
-
-  .timer span:last-child {
-    font-size: 24px;
-  }
-
-  .cab-profile {
-    -webkit-box-align: start !important;
-        -ms-flex-align: start !important;
-            align-items: start !important;
-  }
-
-  .task-block {
-    min-height: 100vh !important;
-  }
-
-  .task-block:first-child, .task-block:last-child {
-    min-height: 88vh !important;
-  }
-
-  .task-body * {
-    max-width: 70%;
-  }
-
-  .users-table {
-    font-size: 18px !important;
-  }
-
-  .users-table td, .users-table th {
-    padding: 10px 15px !important;
-  }
-
-  .heading_holder {
-    font-size: 28px !important;
-  }
-
-  .text h1 {}
-
-  .text p {
-    margin-top: 0%;
-  }
-
-  .text * {
-    font-size: 18px;
-    margin-bottom: 50px;
-  }
-
-  #tabs-2 .text p {
-    margin-top: 0px;
-  }
-
-  .task-widget {
-    overflow-y: hidden !important;
-  }
-}
-
-@media (min-width: 1200px) {}
-
-*, *::after, *::before {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   min-height: 100vh;
   width: 100%;
@@ -1876,5 +1720,161 @@ a.site-logo {
 }
 
 .main-carousel {
+  padding: 0;
+}
+
+@media (min-width: 500px) {
+  .cab-tab {
+    border-radius: 0 0 15px 15px;
+  }
+
+  #pers_footer {
+    margin-top: 20%;
+  }
+
+  .avatar {
+    width: auto !important;
+    height: 87% !important;
+  }
+
+  #users-table {
+    font-size: 18px;
+    line-height: 40px;
+  }
+
+  .task {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .users-table {
+    font-size: 14px !important;
+  }
+
+  .avatar {
+    width: auto;
+    height: 80%;
+  }
+
+  #notific-table {
+    margin-bottom: 0;
+  }
+
+  .users-table td, .users-table th {
+    padding: 5px 10px !important;
+  }
+
+  .users-table {
+    font-size: 19px;
+  }
+
+  .heading_holder {
+    font-size: 24px !important;
+  }
+
+  #tabs h1 {
+    font-size: 20px !important;
+  }
+
+  #pers_footer {
+    margin-top: 20%;
+  }
+
+  #tabs {
+    font-size: 14px !important;
+  }
+
+  .task {
+    height: 30vmin;
+    width: 30vmax;
+    font-size: 80px;
+  }
+}
+
+@media (min-height: 992px) {
+  .cab-tab {
+    border-radius: 0 0 15px 15px;
+  }
+
+  .task-block {
+    min-height: 78vh !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .personal_cab {
+    width: 60% !important;
+  }
+
+  .avatar {
+    width: auto;
+    height: 70%;
+  }
+
+  #pers_footer {
+    margin-top: 0%;
+  }
+
+  .timer span:last-child {
+    font-size: 24px;
+  }
+
+  .cab-profile {
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: start !important;
+  }
+
+  .task-block {
+    min-height: 100vh !important;
+  }
+
+  .task-block:first-child, .task-block:last-child {
+    min-height: 88vh !important;
+  }
+
+  .task-body * {
+    max-width: 70%;
+  }
+
+  .users-table {
+    font-size: 18px !important;
+  }
+
+  .users-table td, .users-table th {
+    padding: 10px 15px !important;
+  }
+
+  .heading_holder {
+    font-size: 28px !important;
+  }
+
+  .text h1 {}
+
+  .text p {
+    margin-top: 0%;
+  }
+
+  .text * {
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+
+  #tabs-2 .text p {
+    margin-top: 0px;
+  }
+
+  .task-widget {
+    overflow-y: hidden !important;
+  }
+}
+
+@media (min-width: 1200px) {}
+
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
   padding: 0;
 }
