@@ -287,6 +287,7 @@ p {
 
 .card-header {
   font-size: 1.5em;
+  text-align: center;
 }
 
 .google_button {
@@ -1184,6 +1185,7 @@ svg {
   font-style: normal;
   font-weight: normal;
   font-size: 2.5em;
+  text-align: left;
 }
 
 .task-header .close-button {
@@ -1529,6 +1531,10 @@ input.answer {
   border-radius: 100%;
 }
 
+#cab-tabs-2 {
+  padding: 1.5em;
+}
+
 .toggle {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1637,50 +1643,47 @@ a.site-logo {
 /* navbar regular css end */
 /* nav-toggler css start */
 .nav-toggler {
-  border: none;
-  padding: 0;
+  height: calc(12vh - 40px);
+  width: calc(12vh - 40px);
+  border: .2em solid #fff;
+  border-radius: 100%;
+  padding: 5px;
   background-color: transparent;
   cursor: pointer;
-  height: 100%;
-  width: calc(12vh - 40px);
+
   display: none;
 }
-
 .nav-toggler span,
 .nav-toggler span:before,
 .nav-toggler span:after {
   width: 100%;
-  height: 6px;
+  height: .2em;
   background-color: #fff;
   display: block;
   -webkit-transition: .3s;
   transition: .3s;
+  margin: auto;
 }
-
 .nav-toggler span:before {
   content: '';
-  -webkit-transform: translateY(calc((-12vh + 60px + 100%) / 2));
-          transform: translateY(calc((-12vh + 60px + 100%) / 2));
+  -webkit-transform: translateY(-.6em);
+          transform: translateY(-.6em);
 }
-
 .nav-toggler span:after {
   content: '';
-  -webkit-transform: translateY(calc((12vh - 60px - 300%) / 2));
-          transform: translateY(calc((12vh - 60px - 300%) / 2));
+  -webkit-transform: translateY(.4em);
+          transform: translateY(.4em);
 }
-
 .nav-toggler.toggler-open span {
   background-color: transparent;
 }
-
 .nav-toggler.toggler-open span:before {
   -webkit-transform: translateY(0px) rotate(45deg);
           transform: translateY(0px) rotate(45deg);
 }
-
 .nav-toggler.toggler-open span:after {
-  -webkit-transform: translateY(-100%) rotate(-45deg);
-          transform: translateY(-100%) rotate(-45deg);
+  -webkit-transform: translateY(-.2em) rotate(-45deg);
+          transform: translateY(-.2em) rotate(-45deg);
 }
 
 @media screen and (max-width: 992px) {
@@ -1771,7 +1774,7 @@ a.site-logo {
 }
 
 .flickity-page-dots {
-  bottom: 5px;
+  bottom: 4vh;
 }
 
 /* white circles */
