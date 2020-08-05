@@ -29,6 +29,12 @@ class TaskController {
     return view.render('pages.tasks.index', { user: user.toJSON(), tasks: tasks_serialized.toJSON() })
   }
 
+  /**
+   * Если answer != null && answered_at != null то имееться 3 состояния ответа
+   * 1. checked == true                         - ответ верный
+   * 2. checked == false && checked_at != null  - ответ неверный
+   * 3. checked == false && checked_at == null  - ответ на рассмотрении
+   */
   async answer({ auth, params, request, response }) {
     const { slug } = params
     const answer = request.input('answer')
@@ -36,30 +42,21 @@ class TaskController {
     const user = await auth.getUser()
     const task = await Task.findBy('slug', slug)
 
-    if (!task.is_manual && task.answer === answer) {
-      await user.tasks().detach([task.id])
-      await user.tasks().attach(task.id, (row) => {
-        if (row.task_id == task.id) {
-          row.answer = answer
-          row.answered_at = new Date().toISOString()
-          row.checked = true
-        }
-      })
+    await Database.table('task_user')
+                  .where('task_id', task.id)
+                  .where('user_id', user.id)
+                  .update({ answer: answer, answered_at: Date.now() })
 
-      return response.route("tasks.index")
-    } else if (slug === "ChewyChewy" && task.is_manual) {
-      await user.tasks().detach([task.id])
-      await user.tasks().attach(task.id, (row) => {
-        if (row.task_id === task.id) {
-          row.answer = answer
-          row.answered_at = new Date().toISOString()
-        }
-      })
+    if (!task.is_manual) {
+      await Database.table('task_user')
+                    .where('task_id', task.id)
+                    .where('user_id', user.id)
+                    .update({ checked: answer == task.answer, checked_at: Date.now()})
 
-      return response.route("tasks.index")
-    } else {
-      return response.route("/tasks/" + slug)
     }
+
+
+    return response.route("tasks.index")
   }
 
   /**
