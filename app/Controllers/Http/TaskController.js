@@ -7,7 +7,6 @@
 const Task = use('App/Models/Task')
 const Database = use('Database')
 
-
 /**
  * Resourceful controller for interacting with tasks
  */
@@ -54,7 +53,6 @@ class TaskController {
                     .update({ checked: answer == task.answer, checked_at: Date.now()})
 
     }
-
 
     return response.route("tasks.index")
   }
