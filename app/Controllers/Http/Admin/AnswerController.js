@@ -4,14 +4,15 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Task = use('App/Models/Task')
+// /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const UserTask = use('App/Models/UserTask')
-const Database = use('Database')
+
+const moment = use('moment')
 
 /**
  * Resourceful controller for interacting with tasks
  */
-class TaskController {
+class AnswerController {
   /**
    * Show a list of all tasks.
    * GET tasks
@@ -21,39 +22,14 @@ class TaskController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ auth, request, response, view }) {
-    const user = await auth.getUser()
-
-    const tasks_serialized = await Task.query().where('started_at', '<', new Date()).orderBy('id').fetch()
-    return view.render('pages.tasks.index', { user: user.toJSON(), tasks: tasks_serialized.toJSON() })
-  }
-
-  /**
-   * Если answer != null && answered_at != null то имееться 3 состояния ответа
-   * 1. checked == true                         - ответ верный
-   * 2. checked == false && checked_at != null  - ответ неверный
-   * 3. checked == false && checked_at == null  - ответ на рассмотрении
-   */
-  async answer({ auth, params, request, response }) {
-    const { slug } = params
-    const answer = request.input('answer')
-
-
-    const user = await auth.getUser()
-    const task = await Task.findBy('slug', slug)
-    const userTask = await UserTask.query().where('user_id', user.id).where('task_id', task.id).first()
-
-    userTask.answer = answer
-    userTask.answered_at = Date.now()
-
-    if (!task.is_manual) {
-      userTask.checked = answer == task.answer
-      userTask.checked_at = Date.now()
-    }
-
-    await userTask.save()
-
-    return response.route("tasks.index")
+  async index({ request, response, view }) {
+    const userTasks = await UserTask.query()
+      .whereNotNull('answer')
+      .whereNotNull('answered_at')
+      .whereDoesntHave('user', (builder) => {
+        builder.where('is_admin', true)
+      }).with('user').with('task').fetch()
+    return view.render('pages.admin.answers.index', { answers: userTasks.toJSON() })
   }
 
   /**
@@ -88,22 +64,7 @@ class TaskController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ auth, params, request, response, view }) {
-    const { slug } = params
-
-    const user = await auth.getUser()
-    const task = await Task.findBy('slug', slug)
-
-    if (!task) {
-      return response.sendStatus(404)
-    }
-
-    const hasTask = await user.tasks().where('slug', slug).getCount()
-    if (!hasTask) {
-      user.tasks().attach([task.id])
-    }
-
-    return view.render('pages.tasks.' + task.slug)
+  async show({ params, request, response, view }) {
   }
 
   /**
@@ -127,6 +88,15 @@ class TaskController {
    * @param {Response} ctx.response
    */
   async update({ params, request, response }) {
+    const { id } = params
+
+    const userTask = await UserTask.find(id)
+    userTask.checked = request.input('checked')
+    userTask.checked_at = Date.now()
+    userTask.save()
+
+    return 'OK'
+
   }
 
   /**
@@ -138,7 +108,8 @@ class TaskController {
    * @param {Response} ctx.response
    */
   async destroy({ params, request, response }) {
+
   }
 }
 
-module.exports = TaskController
+module.exports = AnswerController

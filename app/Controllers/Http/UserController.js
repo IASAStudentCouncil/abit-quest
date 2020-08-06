@@ -63,6 +63,8 @@ class UserController {
       return response.status(404)
     }
 
+    console.log(await user.tasks().fetch())
+
     // get top-5 users
     let ratingList = await User.query()
       .where('is_admin', 0)

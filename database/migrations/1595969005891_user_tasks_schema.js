@@ -5,7 +5,7 @@ const Schema = use('Schema')
 
 class TaskUserSchema extends Schema {
   up () {
-    this.create('task_user', (table) => {
+    this.create('user_tasks', (table) => {
       table.increments()
       table.integer('user_id').unsigned()
       table.integer('task_id').unsigned()
@@ -18,7 +18,7 @@ class TaskUserSchema extends Schema {
   }
 
   down () {
-    this.drop('task_user')
+    this.drop('user_tasks')
   }
 }
 
