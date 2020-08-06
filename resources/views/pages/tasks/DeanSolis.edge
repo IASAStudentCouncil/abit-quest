@@ -1,12 +1,16 @@
 @layout("layouts.task")
 
+@section('title')
+Часовая пиктограмма
+@endsection
+
 @section("task-header")
   @!component("components.task-header", {text: 'Часовая пиктограмма'})
 @endsection
 
 @section("task-body")
   <div class="task-body">
-    <img src="/img/task9.png" class="task-image task-fix-image" alt="">
+    <img src="/img/task9.png" class="task-image-vertical" alt="">
   </div>
 @endsection
 

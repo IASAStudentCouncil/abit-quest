@@ -7,14 +7,14 @@ Task Hub
 @section('header')
 <header class="cab-header container">
   <div class="cab-header__inner container-md justify-content-between">
-    <div class="picture col-3">
+    <div class="picture col-4">
       <img alt="" src="/img/logo-horizontal.svg">
     </div>
-    <div class="timer col-6">
-      <span class="timer__title">The next task will be available in:</span>
+    <div class="timer col-4">
+      <span class="timer__title">This quest will be terminated in:</span>
       <span class="timer__time" id="timer__time"></span>
     </div>
-    <div class="profile-link col-3">
+    <div class="profile-link col-4">
       <div class="row">
         <a class="personal_cab" href="{{ route('users.show', {id: user.id}) }}">
           <div class="avatar-holder col-auto col-md-auto">
@@ -39,7 +39,7 @@ Task Hub
           <h2 class="task_num" id="locked">Level 1</h2>
         </div>
         <div class="col-12">
-          <img alt="ПТУшник" class="task_lvl" src="img/1_locked.svg">
+          <img alt="ПТУшник" class="task_lvl" src="/img/1_locked.svg">
         </div>
       </div>
       <div class="task-block__inner row">
@@ -60,7 +60,7 @@ Task Hub
           <h2 class="task_num" id="locked">Level 2</h2>
         </div>
         <div class="col-12">
-          <img alt="" class="task_lvl" src="img/2_locked.svg">
+          <img alt="" class="task_lvl" src="/img/2_locked.svg">
         </div>
       </div>
       <div class="task-block__inner row">
@@ -88,7 +88,7 @@ Task Hub
           <h2 class="task_num" id="locked">Level 3</h2>
         </div>
         <div class="col-12">
-          <img alt="" class="task_lvl" src="img/3_locked.svg">
+          <img alt="" class="task_lvl" src="/img/3_locked.svg">
         </div>
       </div>
       <div class="task-block__inner row">
@@ -114,7 +114,7 @@ Task Hub
           <h2 class="task_num" id="locked">Level 4</h2>
         </div>
         <div class="col-12">
-          <img alt="" class="task_lvl" src="img/4_locked.svg">
+          <img alt="" class="task_lvl" src="/img/4_locked.svg">
         </div>
       </div>
       <div class="task-block__inner row">

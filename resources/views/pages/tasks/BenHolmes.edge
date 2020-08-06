@@ -1,12 +1,16 @@
 @layout("layouts.task")
 
+@section('title')
+Жмакай на кнопку
+@endsection
+
 @section("task-header")
   @!component("components.task-header", {text: 'Жмакай на кнопку'})
 @endsection
 
 @section("task-body")
   <div class="task-body">
-    <img src="/img/button.svg" class="task-image" alt="">
+    <img src="/img/button.svg" class="task-image-horizontal" alt="">
   </div>
 @endsection
 

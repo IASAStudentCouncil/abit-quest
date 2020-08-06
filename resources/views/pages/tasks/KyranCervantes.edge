@@ -1,12 +1,16 @@
 @layout("layouts.task")
 
+@section('title')
+А все ли так двоично?
+@endsection
+
 @section("task-header")
   @!component("components.task-header", {text: 'А все ли так двоично?'})
 @endsection
 
 @section("task-body")
   <div class="task-body">
-    <img src="/img/task4.svg" class="task-image" alt="">
+    <img src="/img/task4.svg" class="task-image-horizontal" alt="">
   </div>
 @endsection
 

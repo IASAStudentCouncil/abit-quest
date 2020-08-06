@@ -1,12 +1,16 @@
 @layout("layouts.task")
 
+@section('title')
+Это не картинка
+@endsection
+
 @section("task-header")
   @!component("components.task-header", {text: 'Это не картинка'})
 @endsection
 
 @section("task-body")
   <div class="task-body">
-    <img alt="" class="task-image task-fix-image" src="/img/task12.jpg">
+    <img alt="" class="task-image-vertical" src="/img/task12.jpg">
     <p class="task-text">В 1499 году аббат бенедиктинского монастыря Св. Мартина в Шпонгейме Иоганн Тритемий в своем трактате ввел один замечательный термин, который и будет ключом к ответу на это задание</p>
   </div>
 @endsection

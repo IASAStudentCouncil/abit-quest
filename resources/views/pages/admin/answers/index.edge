@@ -1,0 +1,91 @@
+@layout('layouts.admin')
+
+@section('title')
+Answers
+@endsection
+
+@section('content')
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Answers</h1>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Task</th>
+                <th>Answer</th>
+                <th>Answered At</th>
+                <th>Checked</th>
+                <th>Checked At</th>
+                <th>Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @each(answer in answers)
+              <tr>
+                <td>{{answer.id}}</td>
+                <td>{{answer.user.username}}</td>
+                <td>{{answer.task.name}}</td>
+                <td>{{answer.answer}}</td>
+                <td>{{answer.answered_at}}</td>
+                <td>{{answer.checked}}</td>
+                <td>{{answer.checked_at}}</td>
+                <td>{{answer.created_at}}</td>
+                @if(answer.checked == false && answer.checked_at == null)
+                  <td data-id="{{answer.id}}" data-checked="1" class="check-btn"><i   class="fas fa-thumbs-up"></i></td>
+                  <td data-id="{{answer.id}}" data-checked="0" class="check-btn"><i   class="fas fa-thumbs-down"></i></td>
+                @else
+                  <td colspan="2" align="center"><i class="fas fa-check"></i></td>
+                @endif
+              </tr>
+              @endeach
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+@endsection
+
+@section('script')
+  <script>
+    const checkButtons = document.querySelectorAll('.check-btn')
+    checkButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const url = '{{route('admin.answers.index')}}/'
+        fetch(url + button.dataset.id, {
+          method: 'PUT',
+          body: JSON.stringify({ checked: button.dataset.checked }),
+          headers: {
+            'Content-Type': 'application/json',
+            'X-XSRF-TOKEN': '{{ csrfToken  }}'
+          }
+        })
+        .then(r => location.reload())
+        .catch(alert)
+      })
+    });
+  </script>
+@endsection
+
+
+
+
+

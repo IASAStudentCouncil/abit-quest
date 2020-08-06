@@ -1,12 +1,16 @@
 @layout("layouts.task")
 
+@section('title')
+Где-то я эту штуку видел
+@endsection
+
 @section("task-header")
   @!component("components.task-header", {text: 'Где-то я эту штуку видел'})
 @endsection
 
 @section("task-body")
   <div class="task-body">
-    <img alt="" class="task-image task-fix-image" src="/img/task3.png">
+    <img alt="" class="task-image-horizontal" src="/img/task3.png">
   </div>
 @endsection
 

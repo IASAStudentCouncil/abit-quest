@@ -43,5 +43,5 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/', 'AdminController.index').as('index')
   Route.resource('tasks', 'TaskController')
-
+  Route.resource('answers', 'AnswerController')
 }).prefix('admin').namespace('Admin').as('admin').middleware(['authAdmin'])
