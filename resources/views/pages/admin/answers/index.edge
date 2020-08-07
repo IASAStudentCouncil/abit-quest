@@ -71,7 +71,7 @@ Answers
       button.addEventListener('click', (event) => {
         const url = '{{route('admin.answers.index')}}/'
         fetch(url + button.dataset.id, {
-          method: 'PUT',
+          method: 'PATCH',
           body: JSON.stringify({ checked: button.dataset.checked }),
           headers: {
             'Content-Type': 'application/json',
@@ -84,8 +84,3 @@ Answers
     });
   </script>
 @endsection
-
-
-
-
-
