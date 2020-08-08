@@ -675,6 +675,10 @@ img.logo-sc {
   color: rgba(255, 255, 255, .6);
 }
 
+#link-holder {
+  width: 100%;
+}
+
 #triggers {
   font-size: 32px;
 }
@@ -1252,6 +1256,37 @@ code.task-text {
   border: none;
 }
 
+.button-works:focus {
+  outline: none
+}
+
+.logout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  height: 100%;
+  padding: 0 .8em;
+  border-radius: .4em;
+  border: 1px solid #FEFFCD;
+  color: #FEFFCD;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.logout:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
 .task-body .task-text-secondary {
   font-size: .9em;
   line-height: 1.5;
@@ -1627,13 +1662,13 @@ input.answer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: calc(12vh - 80px);
+  height: calc(12vh - 40px);
 }
 
 a.site-logo {
