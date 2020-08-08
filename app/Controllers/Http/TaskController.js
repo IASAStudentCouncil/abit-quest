@@ -47,7 +47,7 @@ class TaskController {
     userTask.answered_at = Date.now()
 
     if (!task.is_manual) {
-      userTask.checked = answer == task.answer
+      userTask.checked = answer.toLowerCase() === task.answer.toLowerCase()
       userTask.checked_at = Date.now()
     }
 
