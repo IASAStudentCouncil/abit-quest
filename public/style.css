@@ -7,6 +7,11 @@
   font-style: normal;
 }
 
+.f-logo, .logo-sc {
+  -webkit-filter: invert(100%) sepia(0%) saturate(7498%) hue-rotate(58deg) brightness(110%) contrast(101%);
+          filter: invert(100%) sepia(0%) saturate(7498%) hue-rotate(58deg) brightness(110%) contrast(101%);
+}
+
 p {
   font-family: "SF UI Display", serif;
 }
@@ -308,7 +313,7 @@ p {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  font-size: 1.5em;
+  font-size: 15px;
 
 }
 
@@ -1233,7 +1238,7 @@ code.task-text {
 }
 
 .task-body .task-text-secondary {
-  font-size: 1em;
+  font-size: .9em;
   line-height: 1.5;
 }
 
@@ -1424,6 +1429,10 @@ code.task-text {
           align-items: center;
   padding: 1.2em;
   border-top: 1px solid #fff;
+}
+
+.task-form *:focus, .task-form *:focus-within {
+  outline: none;
 }
 
 .task-form label {
