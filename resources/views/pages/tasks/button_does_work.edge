@@ -10,6 +10,9 @@
 
 @section("task-body")
   <div class="task-body">
-    <a class="task-button" href="/tasks/button_does_not_work"><img src="/img/button.svg" class="task-image-vertical" alt=""></a>
+    <form class="" action="{{ route("tasks.show", {slug:"BenHolmes"}) }}" method="post">
+      <input type="answer" name="answer" value="enable" hidden>
+      <input class="button-works" type="submit" value="">
+    </form>
   </div>
 @endsection

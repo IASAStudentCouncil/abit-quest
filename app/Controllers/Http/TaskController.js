@@ -47,7 +47,7 @@ class TaskController {
     userTask.answered_at = Date.now()
 
     if (!task.is_manual) {
-      userTask.checked = answer == task.answer
+      userTask.checked = answer.toLowerCase() === task.answer.toLowerCase()
       userTask.checked_at = Date.now()
     }
 
@@ -90,6 +90,10 @@ class TaskController {
    */
   async show({ auth, params, request, response, view }) {
     const { slug } = params
+
+    if (slug == "button_does_not_work" || slug == "button_does_work") {
+      return view.render('pages.tasks.' + slug)
+    }
 
     const user = await auth.getUser()
     const task = await Task.findBy('slug', slug)
@@ -139,6 +143,7 @@ class TaskController {
    */
   async destroy({ params, request, response }) {
   }
+
 }
 
 module.exports = TaskController

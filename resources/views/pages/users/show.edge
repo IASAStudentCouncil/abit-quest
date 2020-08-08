@@ -23,13 +23,14 @@ Personal page
       <div class="menu_list d-none"></div>
       -->
       <nav class="site-navbar">
-
+      <a class="logout d-none d-lg-flex" href="{{ route("login.destroy") }}">Выход</a>
       <!-- site menu/nav -->
       <ul id="cab-triggers" class="triggers-holder d-flex d-lg-none">
         <li id="cab-trigger" class="cab-trigger"><a href="{{ route("tasks.index") }}">ХАБ ЗАДАНИЙ</a></li>
         <li id="cab-trigger-1" class="t-active cab-trigger"><a href="#stat">ОБЩАЯ СТАТИСТИИКА</a></li>
         <li id="cab-trigger-2" class="cab-trigger"><a href="#notifications">УВЕДОМЛЕНИЯ</a></li>
         <li id="cab-trigger-3" class="cab-trigger"><a href="#rules">ПРАВИЛА</a></li>
+        <li id="cab-trigger" class="cab-trigger"><a href="{{ route("login.destroy") }}">Выйти с аккаунта</a></li>
       </ul>
 
       <!-- nav-toggler for mobile version only -->
@@ -49,8 +50,7 @@ Personal page
       <div class="cab-profile col-xs-12 col-sm-12 col-md-12 col-lg-3">
         <div class="img-holder"><img src="{{ user.photo_url }}" alt=""></div>
         <div class="text" id="name-holder">{{ user.name }}</div>
-        <div class="text" id="tag-holder">{{ "@" + user.username }} - {{ user.score }} баллов</div>
-        <div class="text" id="link-holder"><a class="logout" href="{{ route("login.destroy") }}">Выйти с аккаунта</a></div>
+        <div class="text" id="tag-holder">{{ "@" + user.username }} — {{ user.score }} баллов</div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
 
@@ -141,14 +141,14 @@ Personal page
   <div class="container-md">
     <div class="row">
       <div class="col-auto">
-        <img id="f-logo" class="logo-sc" src="/img/logo-sc.svg" alt="">
+        <img id="f-logo" src="/img/logo-sc.svg" alt="IASA SC logo">
       </div>
       <div class="d-flex social-block col-6 col-md-4">
         <div class="row" style="margin:0;">
-          <a href="/" class="social"><img src="/img/inst.svg" alt=""></a>
-          <a href="/" class="social"><img src="/img/tlgr.svg" alt=""></a>
-          <a href="/" class="social"><img src="/img/link.svg" alt=""></a>
-          <a href="/" class="social"><img src="/img/face.svg" alt=""></a>
+          <a href="https://www.instagram.com/studrada_iasa/" class="social"><img src="/img/inst.svg" alt=""></a>
+          <a href="https://t.me/IASA_Student_Council" class="social"><img src="/img/tlgr.svg" alt=""></a>
+          <a href="https://www.linkedin.com/in/iasakpi" class="social"><img src="/img/link.svg" alt=""></a>
+          <a href="https://ru-ru.facebook.com/studrada.iasa/" class="social"><img src="/img/face.svg" alt=""></a>
         </div>
         <div class="row" style="margin:0;font-size: 15px;">
           <p>@IASA Student Council. All Rights Reserved.</p>
