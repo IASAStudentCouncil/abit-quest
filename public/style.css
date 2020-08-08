@@ -1237,6 +1237,21 @@ code.task-text {
 
 }
 
+.task-button {
+  width: auto;
+  height: auto;
+  border-radius: 100%;
+}
+
+.button-works {
+  height: 35vh;
+  width: 35vh;
+  background: url('/img/button.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: none;
+}
+
 .task-body .task-text-secondary {
   font-size: .9em;
   line-height: 1.5;

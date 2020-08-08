@@ -91,6 +91,10 @@ class TaskController {
   async show({ auth, params, request, response, view }) {
     const { slug } = params
 
+    if (slug == "button_does_not_work" || slug == "button_does_work") {
+      return view.render('pages.tasks.' + slug)
+    }
+
     const user = await auth.getUser()
     const task = await Task.findBy('slug', slug)
 
@@ -139,6 +143,7 @@ class TaskController {
    */
   async destroy({ params, request, response }) {
   }
+
 }
 
 module.exports = TaskController
