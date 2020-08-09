@@ -462,7 +462,7 @@ a.login:hover {
 
 .social img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .base-footer {
@@ -1235,6 +1235,7 @@ svg {
 
 .task-text-justify {
   text-align: center;
+  max-width: 640px;
 }
 
 .task-body .task-text {
@@ -1263,7 +1264,7 @@ code.task-text {
   border: none;
 }
 
-.button-works:focus {
+input:focus, input:enabled, input:focus-within {
   outline: none
 }
 
@@ -1302,12 +1303,13 @@ code.task-text {
 .task-image-horizontal {
   height: auto;
   width: 90%;
-  max-height: 35vh
+  max-width: 640px;
 }
 
 .task-image-vertical {
   height: 35vh;
   width: auto;
+  margin: 1em 0;
 }
 
 .task-1__image {
@@ -1991,9 +1993,6 @@ a.site-logo {
     min-height: 88vh !important;
   }
 
-  .task-body * {
-    max-width: 70%;
-  }
 
   .users-table {
     font-size: 18px !important;
