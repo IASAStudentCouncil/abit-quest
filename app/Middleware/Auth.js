@@ -15,6 +15,9 @@ class IsAdmin {
   async handle({ request, auth, response }, next) {
     try {
       await auth.check()
+      if (new Date().getTime() >= Date.parse("27 Aug 2020 23:59:59 GMT+3") ) {
+        return response.sendStatus(403)
+      }
     } catch  {
       return response.route('login.create')
     }
