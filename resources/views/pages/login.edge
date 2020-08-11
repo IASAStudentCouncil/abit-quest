@@ -5,7 +5,7 @@ Login
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container login-container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3">
       @if(flashMessage('successMessage'))
@@ -27,4 +27,27 @@ Login
     </div>
   </div>
 </div>
+@endsection
+
+@section('footer')
+<footer class="cab-footer container-fluid">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-auto">
+        <img id="f-logo" src="/img/logo-sc.svg" alt="IASA SC logo">
+      </div>
+      <div class="d-flex social-block col-6 col-md-4">
+        <div class="row" style="margin:0;">
+          <a href="https://www.instagram.com/studrada_iasa/" class="social"><img src="/img/inst.svg" alt=""></a>
+          <a href="https://t.me/IASA_Student_Council" class="social"><img src="/img/tlgr.svg" alt=""></a>
+          <a href="https://www.linkedin.com/in/iasakpi" class="social"><img src="/img/link.svg" alt=""></a>
+          <a href="https://ru-ru.facebook.com/studrada.iasa/" class="social"><img src="/img/face.svg" alt=""></a>
+        </div>
+        <div class="row" style="margin:0;font-size: 15px;">
+          <p>@IASA Student Council. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 @endsection

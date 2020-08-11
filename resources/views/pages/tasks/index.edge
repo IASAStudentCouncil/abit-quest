@@ -5,7 +5,7 @@ Task Hub
 @endsection
 
 @section('header')
-<header class="cab-header container">
+<header class="cab-header container-lg">
   <div class="cab-header__inner container-md justify-content-between">
     <div class="picture col-4">
       <img alt="" src="/img/logo-horizontal.svg">
@@ -20,7 +20,7 @@ Task Hub
           <div class="avatar-holder col-auto col-md-auto">
             <img alt="" class="avatar" src="{{ user.photo_url }}">
           </div>
-          <div class="d-none d-lg-flex text-holder col-auto">
+          <div class="d-none d-xl-flex text-holder col-auto">
             <p class="">Личный<br>кабинет</p>
           </div>
         </a>
@@ -32,7 +32,7 @@ Task Hub
 
 @section('content')
 <main class="d-block">
-  <div class="container-md main-carousel d-block d-lg-none">
+  <div class="container-md main-carousel d-block d-xl-none">
     <div class="task-block carousel-cell container-fluid">
       <div class="task-block__header row">
         <div class="col-12">
@@ -124,7 +124,7 @@ Task Hub
       </div>
     </div>
   </div>
-  <div class="container-md d-none d-lg-block">
+  <div class="container-md d-none d-xl-block">
     <div class="task-block container-fluid">
       <div class="task-block__header row">
         <div class="col-12">
