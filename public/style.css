@@ -12,6 +12,11 @@
           filter: invert(100%) sepia(0%) saturate(7498%) hue-rotate(58deg) brightness(110%) contrast(101%);
 }
 
+input:focus {
+  outline: none;
+
+}
+
 p {
   font-family: "SF UI Display", serif;
 }
@@ -291,8 +296,34 @@ p {
 }
 
 .card-header {
-  font-size: 1.5em;
+  font-family: "SF UI Display Medium";
+  font-size: 2em;
   text-align: center;
+}
+
+.login-container {
+  min-height: 88vh;
+}
+
+.login-container > .row {
+  margin: auto;
+  height: 88vh;
+}
+
+.login-container > .row > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .google_button {
@@ -317,6 +348,11 @@ p {
 
 }
 
+.card {
+  width: 100%;
+
+}
+
 .card-body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -331,7 +367,6 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-
 }
 
 .text {
@@ -462,7 +497,7 @@ a.login:hover {
 
 .social img {
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .base-footer {
@@ -680,6 +715,12 @@ img.logo-sc {
 #tag-holder {
   font: 2em "SF UI Display Medium";
   color: rgba(255, 255, 255, .6);
+  padding-bottom: 0.25rem;
+}
+
+#score-holder {
+  font: 1.8em "SF UI Display Medium";
+  color: rgba(255, 255, 255, .6);
 }
 
 #link-holder {
@@ -824,7 +865,7 @@ img.logo-sc {
 }
 
 .notific-table td {
-  text-align: right;
+  text-align: left;
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -833,7 +874,6 @@ img.logo-sc {
   width: calc(100% - 20px);
   border-bottom: 1px solid #FFEA87;
   margin: 0 10px;
-  text-align: right;
 }
 
 .notific-table tr:last-child td {
@@ -1026,6 +1066,7 @@ svg {
 }
 
 .task-block__inner {
+  margin: 0;
   margin-top: 7.5vmin;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -1034,6 +1075,7 @@ svg {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+
 }
 
 .task-block__header {
@@ -1071,7 +1113,7 @@ svg {
 }
 
 .task-holder {
-  font-family: SF UI Display, serif;
+  font-family: "SF UI Display Medium", serif;
   font-style: normal;
   font-weight: normal;
   color: #FFFFFF;
@@ -1139,7 +1181,7 @@ svg {
 }
 
 .task p {
-  font-family: SF UI Display, serif;
+  font-family: "SF UI Display Medium", serif;
   font-style: normal;
   font-weight: normal;
   font-size: 150px;
@@ -1197,7 +1239,7 @@ svg {
 }
 
 .task-header .task-title {
-  font-family: SF UI Display, serif;
+  font-family: "SF UI Display Medium", serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.5em;
@@ -1216,6 +1258,9 @@ svg {
 
 .task-body {
   min-height: 50vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1223,18 +1268,43 @@ svg {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
   padding: 2em 1em;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.task-body-scroll {
+  width: 100%;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  padding: 1em;
+  padding-top: 0;
 }
 
 .task-text-justify {
   text-align: center;
+  max-width: 640px;
 }
 
 .task-body .task-text {
@@ -1263,7 +1333,7 @@ code.task-text {
   border: none;
 }
 
-.button-works:focus {
+input:focus, input:enabled, input:focus-within {
   outline: none
 }
 
@@ -1302,12 +1372,13 @@ code.task-text {
 .task-image-horizontal {
   height: auto;
   width: 90%;
-  max-height: 35vh
+  max-width: 640px;
 }
 
 .task-image-vertical {
   height: 35vh;
   width: auto;
+  margin: 1em 0;
 }
 
 .task-1__image {
@@ -1486,10 +1557,15 @@ code.task-text {
           align-items: center;
   padding: 1.2em;
   border-top: 1px solid #fff;
+  font-family: "SF UI Display Light"
 }
 
 .task-form *:focus, .task-form *:focus-within {
   outline: none;
+}
+
+.task-form input {
+  font-family: "SF UI Display Light";
 }
 
 .task-form label {
@@ -1526,7 +1602,6 @@ input.answer {
       align-content: center;
   padding: 0 1em;
   color: #FFF;
-  font-family: "SF UI Display", serif;
   font-size: 1.5em;
   background: #76797C;
   border: 1px solid #FFFFFF;
@@ -1752,7 +1827,7 @@ a.site-logo {
           transform: translateY(-.2em) rotate(-45deg);
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .container {
     max-width: 720px;
   }
@@ -1940,20 +2015,25 @@ a.site-logo {
 
   .cab-tab {
     border-radius: 0 0 15px 15px;
+    min-height: 40vh;
   }
 
   .task-block {
     min-height: 78vh !important;
+  }
+
+  .flickity-viewport {
+    height: 78vh !important;
+  }
+
+  .cab-footer {
+    height: 10vh;
   }
 }
 
 @media (min-width: 992px) {
   html {
     font-size: 14px;
-  }
-
-  .personal_cab {
-    width: 60% !important;
   }
 
   .task-fix-image {
@@ -1975,25 +2055,6 @@ a.site-logo {
     margin-top: 0%;
   }
 
-
-
-  .cab-profile {
-    -webkit-box-align: start !important;
-        -ms-flex-align: start !important;
-            align-items: start !important;
-  }
-
-  .task-block {
-    min-height: 100vh !important;
-  }
-
-  .task-block:first-child, .task-block:last-child {
-    min-height: 88vh !important;
-  }
-
-  .task-body * {
-    max-width: 70%;
-  }
 
   .users-table {
     font-size: 18px !important;
@@ -2024,7 +2085,23 @@ a.site-logo {
 }
 
 @media (min-width: 1200px) {
+  .personal_cab {
+    width: 60% !important;
+  }
 
+  .task-block {
+    min-height: 100vh !important;
+  }
+
+  .task-block:first-child, .task-block:last-child {
+    min-height: 88vh !important;
+  }
+
+  .cab-profile {
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: start !important;
+  }
 }
 
 *, *::after, *::before {
@@ -2032,4 +2109,9 @@ a.site-logo {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.flickity-prev-next-button {
+  border: 0.2em solid #fff;
+  border-radius: 100%;
 }
