@@ -22,9 +22,10 @@ class UserController {
   async index({ request, response, view }) {
     const users = await User.query()
       .where('is_admin', 0)
-      .orderBy('score', 'desc')
       .fetch()
-    return response.json(users)
+
+
+    return response.json(users.toJSON().sort((userA, userB) => userB.score - userA.score))
   }
 
   /**
